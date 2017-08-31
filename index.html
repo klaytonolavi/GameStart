@@ -47,8 +47,10 @@
 			<div class="container">
 				<div class="row">
 					<div class="col s12">
-						<div class="card-panel" id="topCard">
-							Welcome to <span class="red-text">Game</span>Start!  Here you can find information about your favorite games.  Never played it before?  That's why you're here!  Do a search to find out the latest Reddit threads regarding your game and then find players on Twitch who can give you a first-hand experience on how to play the game.  Get your game to Level 1!
+						<div class="card-panel" id="topCardHome">
+							Welcome to <span class="red-text">Game</span>Start!  Here you can find information about your favorite games.  Never played it before?  That's why you're here!  Do a search to find out the latest <a href="https://www.reddit.com" target="_blank">Reddit</a> threads regarding your game and then find players on <a href="https://www.twitch.tv" target=")blank">Twitch</a> who can give you a first-hand experience on how to play the game.  Get your game to Level 1!
+						</div>
+						<div class="card-panel" id="topCardSearch">
 						</div>
 					</div>
 				</div>
@@ -69,27 +71,26 @@
 						</div>
 					</div>
 
+
 					<div class="col s12 m6">
 						<div class="card black" id="rightCard">
 							<div class="card-content white-text">
 								<span class="card-title">Sign In or Sign Up</span>
-									<div>
+								<div class="row">
+									<form class="col s12">
 										<div class="row">
-											<form class="col s12">
-												<div class="row">
-													<div class="input-field col s8">
-														<i class="material-icons prefix">contacts</i>
-														<input id="login" type="text" class="validate">
-														<label for="login">Your Name</label>
-													</div>
-												</div>
-												<div class="row">
-													<div class="input-field col s12">
-														<a href="index.html" class="btn waves-effect waves-light red col">Submit</a>
-													</div>
-												</div>
-										</form>
-									</div>
+											<div class="input-field col s8">
+												<i class="material-icons prefix">contacts</i>
+												<input id="login" type="text" class="validate">
+												<label for="login">Your Name</label>
+											</div>
+										</div>
+										<div class="row">
+											<div class="input-field col s12">
+												<a href="index.html" class="btn waves-effect waves-light red col">Submit</a>
+											</div>
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
@@ -138,24 +139,7 @@
 		</footer>
 
 
-		<script>
-				$("#gamingNews").empty();
-
-				$.ajax({
-					url: "https://newsapi.org/v1/articles?source=ign&sortBy=top&apiKey=99f15eb49458454290e17af6312b8797",
-					method: 'GET',
-				}).done(function(result) {
-					console.log(result);
-					console.log(result.articles[0].title);
-					for (var i = 0; i < 5; i++) {
-						var gameHeadline = result.articles[i].title;
-						console.log(gameHeadline);
-						$("#gamingNews").append('<p><a href="' + result.articles[i].url + '" target="_blank">' + gameHeadline + "</a></p>");
-					}
-				}).fail(function(err) {
-					throw err;
-				});
-		</script>
+		<script src="assets/javascript/home.js"></script>
 
 
 	</body>

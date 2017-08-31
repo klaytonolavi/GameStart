@@ -30,3 +30,11 @@ nav .brand-logo {
 	width: 130px;
 	text-align: center;
 }
+
+#topCardHome {
+	display: block;
+}
+
+#topCardSearch {
+	display: none;
+}
