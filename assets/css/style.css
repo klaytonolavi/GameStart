@@ -45,4 +45,11 @@ nav .brand-logo {
 
 .container-twitch {
 	display: none;
+	
 }
+
+#twitch-row {
+	overflow-y: scroll;
+	height: 300px;
+}
+

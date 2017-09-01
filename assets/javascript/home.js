@@ -166,17 +166,19 @@ $("body").on("click", ".gameBtn", function(e) {
           var streamLink = results[i].channel.url;
           
             // making tags for the streamName and streamLink
-          var h5 = $("<h5>").text("Streamer name: " + streamName);                  
-          var p = $("<p>").html("Link: " + "<a href="+streamLink+ "target='_blank'>"+streamLink+"</a>");
+          var pName = $("<p>").text("Streamer: " + streamName);                  
+          
+          // var p = $("<p>").html("<a href="+streamLink+ "target='_blank'>"+streamLink+"</a>");
 
             // making an img div for the thumbnail to the stream
-          var streamImage = $("<img>");
+          var streamImage = $("<div>");
+          streamImage.html("<a href="+streamLink+ " target='_blank'>"+"<img src="+results[i].preview.medium+"></a>")
 
-          streamImage.attr("src", results[i].preview.small);
+          // streamImage.attr("src", results[i].preview.medium);
 
             // appending the streamDiv for thumbnail, name and link
-          streamDiv.append(h5);
-          streamDiv.append(p);
+          streamDiv.append(pName);
+          
           streamDiv.append(streamImage);
 
             // prepending all of the results into the results-display div
