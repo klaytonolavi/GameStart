@@ -46,4 +46,22 @@ nav .brand-logo {
 #topCardSearch {
 	display: none;
 	text-align: center;
+
 }
+
+.container-sign-in {
+	
+}
+
+.container-twitch {
+	display: none;
+	
+}
+
+#twitch-row {
+	overflow-y: scroll;
+	height: 300px;
+}
+
+
+
