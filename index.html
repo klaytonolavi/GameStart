@@ -27,6 +27,9 @@
 		<!-- Local CSS -->
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
+		<!-- Firebase -->
+		<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+
 
 	</head>
 
@@ -51,6 +54,14 @@
 							Welcome to <span class="red-text">Game</span>Start!  Here you can find information about your favorite games.  Never played it before?  That's why you're here!  Do a search to find out the latest <a href="https://www.reddit.com" target="_blank">Reddit</a> threads regarding your game and then find players on <a href="https://www.twitch.tv" target=")blank">Twitch</a> who can give you a first-hand experience on how to play the game.  Get your game to Level 1!
 						</div>
 						<div class="card-panel" id="topCardSearch">
+							<span id="welcomeMessage"></span>
+							<br>Edit your games list below.<br>
+							<input id="gameName" type="text">
+							<button id="addGame">Add</button>
+							<button id="removeGame">Remove</button><br>
+							<span id="gameMessage">Game message</span>
+						</div>
+						<div class="card-panel" id="buttonList">
 						</div>
 					</div>
 				</div>
@@ -71,10 +82,10 @@
 						</div>
 					</div>
 
-	<!-- new div for twitch API content -->
+					<!-- new div for twitch API content -->
 				<div class="container-twitch">
 					<div class="col s12 m6">
-						<div class="card black" id="rightCard-twitch">
+						<div class="card black" id="rightCard">
 							<div class="card-content white-text">
 								<span class="card-title">Learn from the Pros</span>
 								<div class="row">
@@ -90,8 +101,6 @@
 					</div>
 				</div>
 
-
-	<!-- original div with sign in/ sign up  -->
 				<div class="container-sign-in">
 					<div class="col s12 m6">
 						<div class="card black" id="rightCard">
@@ -108,7 +117,7 @@
 										</div>
 										<div class="row">
 											<div class="input-field col s12">
-												<a href="index.html" class="btn waves-effect waves-light red col">Submit</a>
+												<a id="submitBtn" class="btn waves-effect waves-light red col">Submit</a>
 											</div>
 										</div>
 									</form>
@@ -118,7 +127,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
 		</main>
 		<footer class="page-footer black">
 			<div class="container">
@@ -159,11 +167,6 @@
 				</div>
 			</div>
 		</footer>
-
-
 		<script src="assets/javascript/home.js"></script>
-		<script src="assets/javascript/twitch-api.js"></script>
-
-
 	</body>
 </html>

@@ -1,17 +1,14 @@
   // empty array for holding the games that we search
-var gamesArray = [];
+
 
   // submit button to search the twitch API for whatever is inputed into search input box
-$("#submit-button").on("click", function(e) {
+$("body").on("click", ".gameBtn" function(e) {
       e.preventDefault();
-      var game = $("#game-search").val().trim();
+      var game = $(this).attr("id");
       console.log(game);
       var queryURL = "https://api.twitch.tv/kraken/streams/?game=" + game + "&limit=10";
           
-            // pushing the games search into the empty array and console logging it
-          gamesArray.push(game);
-          console.log(gamesArray);
-
+          
       $.ajax({
         url: queryURL,
         method: "GET",
