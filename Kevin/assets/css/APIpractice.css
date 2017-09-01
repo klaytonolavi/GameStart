@@ -1,0 +1,8 @@
+span {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+div, .results {
+  margin-top: 30px;
+}
