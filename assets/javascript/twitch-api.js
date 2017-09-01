@@ -33,7 +33,7 @@ $("#submit-button").on("click", function(e) {
           
             // making tags for the streamName and streamLink
           var h5 = $("<h5>").text("Streamer name: " + streamName);                  
-          var p = $("<p>").html("Link: " + "<a href="+streamLink+">"+streamLink+"</a>");
+          var p = $("<p>").html("Link: " + "<a href="+streamLink+ "target='_blank'>"+streamLink+"</a>");
 
             // making an img div for the thumbnail to the stream
           var streamImage = $("<img>");
