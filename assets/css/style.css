@@ -31,10 +31,19 @@ nav .brand-logo {
 	text-align: center;
 }
 
+#buttonList {
+	display: none;
+}
+
+#gameName {
+	width: 30%;
+}
+
 #topCardHome {
 	display: block;
 }
 
 #topCardSearch {
 	display: none;
+	text-align: center;
 }
