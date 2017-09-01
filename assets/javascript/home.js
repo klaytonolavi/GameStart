@@ -13,7 +13,9 @@ var database = firebase.database();
 var currentUser;
 
 $(document).ready(function(){
-	$("#gamingNews").empty();
+	// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+
+	$('.modal').modal();
 
 	$.ajax({
 		url: "https://newsapi.org/v1/articles?source=ign&sortBy=top&apiKey=99f15eb49458454290e17af6312b8797",
@@ -30,19 +32,21 @@ $(document).ready(function(){
 		throw err;
 	});
 
-
 });
+
 
 $("#submitBtn").on("click", function(event) {
 
 	event.preventDefault();
+
 
 	// hide sign in div
 	$(".container-sign-in").hide();
 	// show twitch div
 	$(".container-twitch").show();
 
-	currentUser = $("#login").val().trim();
+	currentUser = toTitleCase($("#login").val().trim());
+
 	updateUser();
 	console.log(currentUser);
 	database.ref("/userList").once("value").then(function(snapshot) {
@@ -91,6 +95,12 @@ $("#removeGame").on("click", function(event) {
 	});
 });
 
+
+function toTitleCase(str) {
+	return str.replace(/([^\W_]+[^\s-]*) */g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+
+
 function updateUser() {
 
 	console.log("User updated: " + currentUser);
@@ -119,7 +129,10 @@ function updateButtons(arr) {
 	//Refill the button list
 	for (var i=0; i<arr.length; i++) {
 		console.log("Button added");
+
 		$("#buttonList").append("<button class='gameBtn' id='"+arr[i]+"'>"+arr[i]+"</button>");
+
+
 	}
 }
 
@@ -137,6 +150,7 @@ function deleteDuplicates() {
 		});
 	});
 }
+
 
  // submit button to search the twitch API for whatever is inputed into search input box
 $("body").on("click", ".gameBtn", function(e) {
@@ -187,5 +201,6 @@ $("body").on("click", ".gameBtn", function(e) {
         }
 
     });
+
 
 });
