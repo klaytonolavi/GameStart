@@ -17,11 +17,6 @@ $(document).ready(function(){
 
 	$('.modal').modal();
 
-	$("#submit").on("click", function() {
-		$("#topCardHome").css("display", "none");
-		$("#topCardSearch").css("display", "none");
-	});
-
 	$.ajax({
 		url: "https://newsapi.org/v1/articles?source=ign&sortBy=top&apiKey=99f15eb49458454290e17af6312b8797",
 		method: 'GET',
@@ -41,7 +36,7 @@ $("#submitBtn").on("click", function(event) {
 
 	event.preventDefault();
 
-	currentUser = $("#login").val().trim();
+	currentUser = toTitleCase($("#login").val().trim());
 	updateUser();
 	console.log(currentUser);
 	database.ref("/userList").once("value").then(function(snapshot) {
@@ -89,6 +84,10 @@ $("#removeGame").on("click", function(event) {
 		});
 	});
 });
+
+function toTitleCase(str) {
+	return str.replace(/([^\W_]+[^\s-]*) */g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
 
 function updateUser() {
 
