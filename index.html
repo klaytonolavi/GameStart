@@ -38,7 +38,7 @@
 			<nav class="top-nav black">
 				<div class="container">
 					<div class="nav-wrapper">
-						<a class="brand-logo"><span class="red-text">Game</span>Start</a>
+						<a class="brand-logo" href="index.html"><span class="red-text">Game</span>Start</a>
 						<div class="right">
 							Get Your Game to Level 1
 						</div>
@@ -52,6 +52,10 @@
 					<div class="col s12">
 						<div class="card-panel" id="topCardHome">
 							Welcome to <span class="red-text">Game</span>Start!  Here you can find information about your favorite games.  Never played it before?  That's why you're here!  Do a search to find out the latest <a href="https://www.reddit.com" target="_blank">Reddit</a> threads regarding your game and then find players on <a href="https://www.twitch.tv" target=")blank">Twitch</a> who can give you a first-hand experience on how to play the game.  Get your game to Level 1!
+							  <!-- Modal Trigger -->
+  
+
+
 						</div>
 						<div class="card-panel" id="topCardSearch">
 							<span id="welcomeMessage"></span>
@@ -82,7 +86,26 @@
 						</div>
 					</div>
 
+					<!-- new div for twitch API content -->
+				<div class="container-twitch">
+					<div class="col s12 m6">
+						<div class="card black" id="rightCard">
+							<div class="card-content white-text">
+								<span class="card-title"><h5>Learn from the Pros</h5></span>
+								<div class="row" id="twitch-row">
+									<form class="col s12">
+										<div class="row-results">
+	<!-- twitch results will go here -->
+									
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
+				<div class="container-sign-in">
 					<div class="col s12 m6">
 						<div class="card black" id="rightCard">
 							<div class="card-content white-text">
@@ -114,44 +137,74 @@
 				<div class="row">
 					<div class="col l6 s12">
 						<h5 class="white-text">Help <span class="red-text">Game</span>Start Grow</h5>
-						<p class="grey-text text-lighten-4">If you have ideas for how <span class="red-text">Game</span>Start can be improved, let us know!  Click on <a href="#!">Suggestions</a> and give us a hint.</p>
+						<p class="grey-text text-lighten-4">If you have ideas for how <span class="red-text">Game</span>Start can be improved, let us know!  Click on <a class="modal-trigger" href="#suggestionsModal">Suggestions</a> and give us a hint.</p>
 						<p class="grey-text text-lighten-4">Chat is coming!  Talk to other players online, discuss the games you're playing, and even find new people to game with.</p>
 					</div>
 					<div class="col l4 offset-l2 s12">
 						<h5 class="white-text">Stuff to Click</h5>
 						<ul>
 							<li>
-								<div class="chip footerChip">
-									<img src="assets/images/support-float-icon.jpg" alt="Contact Person">
-									<a class="black-text href="#!">Support</a>
-								</div>
+								<a class="modal-trigger" href="#supportModal">
+									<div class="chip footerChip">
+										<img src="assets/images/support-float-icon.jpg" alt="Support">
+										Support
+									</div>
+								</a>
+							</li>
+							<li>
+								<a class="modal-trigger" href="#suggestionsModal">
+									<div class="chip footerChip">
+										<img src="assets/images/idea.jpg" alt="Suggestions">
+										Suggestions
+									</div>
+								</a>
 							</li>
 							<li>
 								<div class="chip footerChip">
-									<img src="assets/images/idea.jpg" alt="Contact Person">
-									<a class="black-text" href="#!">Suggestions</a>
-								</div>
-							</li>
-							<li>
-								<div class="chip footerChip">
-									<img src="assets/images/about-us.JPG" alt="Contact Person">
-									<a class="black-text" href="#!">About Us</a>
+									<img src="assets/images/about-us.JPG" alt="About Us">
+									<a class="black-text" href="about-us.html">About Us</a>
 								</div>
 							</li>
 						</ul>
+
+						<!-- Support Modal -->
+						<div id="supportModal" class="modal black-text">
+							<div class="modal-content">
+								<h4>Support for the Site</h4>
+								<p>If you want to use the site, follow these simple steps:</p>
+								<p>1. Enter your name in the Sign In or Sign Up field.  This will let us know who you are and bring up any previous searches you've saved.</p>
+								<p>2. If you've made any searches, just click on the button to load up its information.
+								<p>&nbsp;&nbsp;&nbsp;* If you want to create a new search, just enter the game name in the field and click Add.</p>
+								<p>&nbsp;&nbsp;&nbsp;* To delete a search button, just enter the game name in the field and click Remove.</p>
+								<p>3. In the Reddit and Twitch boxes, just click on the links to get the info you need to take Get your game to Level 1!</p>
+							</div>
+							<div class="modal-footer">
+								<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cool</a>
+							</div>
+						</div>
+
+						<!-- Suggestions Modal -->
+						<div id="suggestionsModal" class="modal black-text">
+							<div class="modal-content">
+								<h4>Help Improve <span class="red-text">Game</span>Start!</h4>
+								<p>If you have an idea for a new feature let us know!  Click on the link below to send us email!</p>
+								<a href="mailto:not@your.concern.com">Suggestions</a>
+							</div>
+							<div class="modal-footer">
+								<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cool</a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
+
 			<div class="footer-copyright">
 				<div class="container">
-					© 2017 Copyright Text
+					© 2017 Copyright <span class="red-text">Game</span>Start Team
 				</div>
 			</div>
+
 		</footer>
-
-
 		<script src="assets/javascript/home.js"></script>
-
-
 	</body>
 </html>
