@@ -32,11 +32,21 @@ $(document).ready(function(){
 		throw err;
 	});
 
+});
+
+
 $("#submitBtn").on("click", function(event) {
 
 	event.preventDefault();
 
+
+	// hide sign in div
+	$(".container-sign-in").hide();
+	// show twitch div
+	$(".container-twitch").show();
+
 	currentUser = toTitleCase($("#login").val().trim());
+
 	updateUser();
 	console.log(currentUser);
 	database.ref("/userList").once("value").then(function(snapshot) {
@@ -85,9 +95,11 @@ $("#removeGame").on("click", function(event) {
 	});
 });
 
+
 function toTitleCase(str) {
 	return str.replace(/([^\W_]+[^\s-]*) */g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }
+
 
 function updateUser() {
 
@@ -117,7 +129,10 @@ function updateButtons(arr) {
 	//Refill the button list
 	for (var i=0; i<arr.length; i++) {
 		console.log("Button added");
-		$("#buttonList").append("<button id='"+arr[i]+"'>"+arr[i]+"</button>");
+
+		$("#buttonList").append("<button class='gameBtn' id='"+arr[i]+"'>"+arr[i]+"</button>");
+
+
 	}
 }
 
@@ -135,4 +150,57 @@ function deleteDuplicates() {
 		});
 	});
 }
+
+
+ // submit button to search the twitch API for whatever is inputed into search input box
+$("body").on("click", ".gameBtn", function(e) {
+      e.preventDefault();
+      var game = $(this).attr("id");
+      console.log(game);
+      var queryURL = "https://api.twitch.tv/kraken/streams/?game=" + game + "&limit=10";
+          
+          
+      $.ajax({
+        url: queryURL,
+        method: "GET",
+        headers: {"Client-ID": "uo6dggojyb8d6soh92zknwmi5ej1q2"}
+      }).done(function(response) {
+        
+        console.log(response);
+
+        var results = response.streams;
+        
+          // for loop to search through the 10 results
+        for (var i = 0; i < results.length; i++) {
+
+          var streamDiv = $("<div class='streamDiv'>");
+          
+            // gets the results info for the channel display name and URL
+          var streamName = results[i].channel.display_name;
+          var streamLink = results[i].channel.url;
+          
+            // making tags for the streamName and streamLink
+          var pName = $("<p>").text("Streamer: " + streamName);                  
+          
+          // var p = $("<p>").html("<a href="+streamLink+ "target='_blank'>"+streamLink+"</a>");
+
+            // making an img div for the thumbnail to the stream
+          var streamImage = $("<div>");
+          streamImage.html("<a href="+streamLink+ " target='_blank'>"+"<img src="+results[i].preview.medium+"></a>")
+
+          // streamImage.attr("src", results[i].preview.medium);
+
+            // appending the streamDiv for thumbnail, name and link
+          streamDiv.append(pName);
+          
+          streamDiv.append(streamImage);
+
+            // prepending all of the results into the results-display div
+          $(".row-results").append(streamDiv);
+
+        }
+
+    });
+
+
 });
