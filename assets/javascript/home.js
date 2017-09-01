@@ -155,6 +155,7 @@ function deleteDuplicates() {
  // submit button to search the twitch API for whatever is inputed into search input box
 $("body").on("click", ".gameBtn", function(e) {
       e.preventDefault();
+      $(".streamDiv").empty();
       var game = $(this).attr("id");
       console.log(game);
       var queryURL = "https://api.twitch.tv/kraken/streams/?game=" + game + "&limit=10";
