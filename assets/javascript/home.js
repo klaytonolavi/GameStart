@@ -63,11 +63,31 @@ $("#addGame").on("click", function(event) {
 
 	var newGame = $("#gameName").val().trim();
 
-	database.ref("/userList/" + currentUser).push({
-		game: newGame
-	});
+	var queryURL = "https://api.twitch.tv/kraken/streams/?game=" + newGame + "&limit=10";
 
-	$("#gameMessage").html(newGame + " has been added to your list.");
+	$.ajax({
+        url: queryURL,
+        method: "GET",
+        headers: {"Client-ID": "uo6dggojyb8d6soh92zknwmi5ej1q2"}
+      }).done(function(response) {
+        
+        console.log(response);
+
+        var results = response.streams;
+        
+        if (results.length > 0) {
+        	database.ref("/userList/" + currentUser).push({
+				game: newGame
+			});
+			$("#gameMessage").html(newGame + " has been added to your list.");
+        }
+        else {
+        	$("#gameMessage").html(newGame + " does not exist.");
+        }
+
+    });
+
+	
 	$("#gameName").val("");
 });
 
@@ -122,7 +142,7 @@ function updateButtons(arr) {
 	
 	//Refill the button list
 	for (var i=0; i<arr.length; i++) {
-		$("#buttonList").append("<button class='gameBtn' id='"+arr[i]+"'>"+arr[i]+"</button>");
+		$("#buttonList").append('<button class="gameBtn" id="'+arr[i]+'">'+arr[i]+'</button>');
 
 
 	}
