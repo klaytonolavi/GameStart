@@ -61,7 +61,7 @@ $("#submitBtn").on("click", function(event) {
 $("#addGame").on("click", function(event) {
 	event.preventDefault();
 
-	var newGame = $("#gameName").val().trim();
+	var newGame = $("#gameName").val().trim().toLowerCase();
 
 	var queryURL = "https://api.twitch.tv/kraken/streams/?game=" + newGame + "&limit=10";
 
@@ -79,10 +79,13 @@ $("#addGame").on("click", function(event) {
         	database.ref("/userList/" + currentUser).push({
 				game: newGame
 			});
-			$("#gameMessage").html(newGame + " has been added to your list.");
+
+
+			$("#gameMessage").html(toTitleCase(newGame) + " has been added to your list.");
         }
         else {
-        	$("#gameMessage").html(newGame + " does not exist.");
+        	$("#gameMessage").html(toTitleCase(newGame) + " does not exist.");
+
         }
 
     });
@@ -94,13 +97,13 @@ $("#addGame").on("click", function(event) {
 $("#removeGame").on("click", function(event) {
 	event.preventDefault();
 
-	var newGame = $("#gameName").val().trim();
+	var newGame = $("#gameName").val().trim().toLowerCase();
 	$("#gameName").val("");
 
 	database.ref("/userList/" + currentUser).once("value").then(function(snapshot) {
 		snapshot.forEach(function(snapshotChild) {
 			if (snapshotChild.val().game === newGame) {
-				$("#gameMessage").html(newGame + " has been removed from list.");
+				$("#gameMessage").html(toTitleCase(newGame) + " has been removed from list.");
 				database.ref("/userList/" + currentUser).child(snapshotChild.key).remove();
 				return true;
 			}
@@ -142,8 +145,9 @@ function updateButtons(arr) {
 	
 	//Refill the button list
 	for (var i=0; i<arr.length; i++) {
-		$("#buttonList").append('<button class="gameBtn" id="'+arr[i]+'">'+arr[i]+'</button>');
 
+		
+		$("#buttonList").append('<a class="waves-effect waves-light btn gameBtn" id="'+arr[i]+'">'+arr[i]+'</a>');
 
 	}
 }
@@ -156,7 +160,7 @@ function deleteDuplicates() {
 				testArray.push(snapshotChild.val().game);
 			}
 			else {
-				$("#gameMessage").html(snapshotChild.val().game + " is already on your list");
+				$("#gameMessage").html(toTitleCase(snapshotChild.val().game) + " is already on your list");
 				database.ref("/userList/" + currentUser).child(snapshotChild.key).remove();
 			}
 		});

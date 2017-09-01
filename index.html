@@ -38,8 +38,10 @@
 			<nav class="top-nav black">
 				<div class="container">
 					<div class="nav-wrapper">
-						<a class="brand-logo" href="index.html"><span class="red-text">Game</span>Start</a>
-						<div class="right">
+						<div class="left">
+							<a class="brand-logo" href="index.html"><span class="red-text">Game</span>Start</a>
+						</div>
+						<div class="right hide-on-med-and-down">
 							Get Your Game to Level 1
 						</div>
 					</div>
@@ -159,10 +161,12 @@
 								</a>
 							</li>
 							<li>
-								<div class="chip footerChip">
-									<img src="assets/images/about-us.JPG" alt="About Us">
-									<a class="black-text" href="about-us.html">About Us</a>
-								</div>
+								<a class="modal-trigger" href="#aboutUsModal">
+									<div class="chip footerChip">
+										<img src="assets/images/about-us.JPG" alt="About Us">
+										About Us
+									</div>
+								</a>
 							</li>
 						</ul>
 
@@ -193,6 +197,23 @@
 								<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cool</a>
 							</div>
 						</div>
+
+						<!-- About Us Modal -->
+						<div id="aboutUsModal" class="modal black-text">
+							<div class="modal-content">
+								<h4>About Us</h4>
+								<p>We're four guys who decided to take a web development boot camp and got thrown together to do a project.  Here's to learning something!</p>
+								<p><span style="font-weight: bold" class="red-text">Brian P. Evans:</span>  Mathematician at Large and Actor for Hire, Brian was in Tech Support and Product Management for nigh on 30 years when the contract got reduced and he got laid off.  Now, he's learning web development to get a new job.  Don't like the front end design?  Blame him.</p>
+								<p><span style="font-weight: bold" class="red-text">Klayton Liekkio:</span> Entry level full stack web developer. Surfer and rock climber from Carlsbad, CA. Spends too much time on Twitch and Reddit. Responsible for Twitch API functionality.</p>
+								<p><span style="font-weight: bold" class="red-text">Kevin Lussier:</span></p>
+								<p><span style="font-weight: bold" class="red-text">Pearce Moffat:</span></p>
+							</div>
+							<div class="modal-footer">
+								<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cool</a>
+							</div>
+						</div>
+
+
 					</div>
 				</div>
 			</div>
