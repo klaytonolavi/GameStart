@@ -79,10 +79,13 @@ $("#addGame").on("click", function(event) {
         	database.ref("/userList/" + currentUser).push({
 				game: newGame
 			});
+
+
 			$("#gameMessage").html(toTitleCase(newGame) + " has been added to your list.");
         }
         else {
         	$("#gameMessage").html(toTitleCase(newGame) + " does not exist.");
+
         }
 
     });
@@ -142,7 +145,10 @@ function updateButtons(arr) {
 	
 	//Refill the button list
 	for (var i=0; i<arr.length; i++) {
+
+		
 		$("#buttonList").append('<a class="waves-effect waves-light btn gameBtn" id="'+arr[i]+'">'+arr[i]+'</a>');
+
 	}
 }
 
