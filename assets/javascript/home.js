@@ -21,10 +21,12 @@ $(document).ready(function(){
 		url: "https://newsapi.org/v1/articles?source=ign&sortBy=top&apiKey=99f15eb49458454290e17af6312b8797",
 		method: 'GET',
 	}).done(function(result) {
+		$("#gamingNews").append("<ul>");
 		for (var i = 0; i < 5; i++) {
 			var gameHeadline = result.articles[i].title;
-			$("#gamingNews").append('<p><a href="' + result.articles[i].url + '" target="_blank">' + gameHeadline + "</a></p>");
+			$("#gamingNews").append('<li><a href="' + result.articles[i].url + '" target="_blank">' + gameHeadline + "</a></li>");
 		}
+		$("#gamingNews").append("</ul>");
 	}).fail(function(err) {
 		throw err;
 	});
@@ -35,27 +37,28 @@ $(document).ready(function(){
 $("#submitBtn").on("click", function(event) {
 
 	event.preventDefault();
+	if ($("#login").val() !== "") {
 
+		// hide sign in div
+		$(".container-sign-in").hide();
+		// show twitch div
+		$(".container-twitch").show();
 
-	// hide sign in div
-	$(".container-sign-in").hide();
-	// show twitch div
-	$(".container-twitch").show();
+		currentUser = toTitleCase($("#login").val().trim());
 
-	currentUser = toTitleCase($("#login").val().trim());
-
-	updateUser();
-	database.ref("/userList").once("value").then(function(snapshot) {
-		if (snapshot.child(currentUser).exists()) {
-			$("#welcomeMessage").html("Welcome back, "+currentUser+".");
-		}
-		else {
-			$("#welcomeMessage").html("Hello, "+currentUser+". Welcome to GameStart.");
-		}
-	});
-	$("#topCardHome").css("display", "none");
-	$("#topCardSearch").css("display", "block");
-	$("#buttonList").css("display", "block");
+		updateUser();
+		database.ref("/userList").once("value").then(function(snapshot) {
+			if (snapshot.child(currentUser).exists()) {
+				$("#welcomeMessage").html("Welcome back, "+currentUser+".");
+			}
+			else {
+				$("#welcomeMessage").html("Hello, "+currentUser+". Welcome to GameStart.");
+			}
+		});
+		$("#topCardHome").css("display", "none");
+		$("#topCardSearch").css("display", "block");
+		$("#buttonList").css("display", "block");
+	}
 });
 
 $("#addGame").on("click", function(event) {
@@ -145,10 +148,7 @@ function updateButtons(arr) {
 	
 	//Refill the button list
 	for (var i=0; i<arr.length; i++) {
-
-		
-		$("#buttonList").append('<a class="waves-effect waves-light btn gameBtn" id="'+arr[i]+'">'+arr[i]+'</a>');
-
+		$("#buttonList").append('<a class="waves-effect waves-red btn red gameBtn" id="'+arr[i]+'">'+arr[i]+'</a>');
 	}
 }
 
@@ -203,7 +203,7 @@ $("body").on("click", ".gameBtn", function(e) {
 
             // making an img div for the thumbnail to the stream
           var streamImage = $("<div>");
-          streamImage.html("<a href="+streamLink+ " target='_blank'>"+"<img src="+results[i].preview.medium+"></a>")
+          streamImage.html("<a href="+streamLink+ " target='_blank'>"+"<img style='width: 95%' src="+results[i].preview.medium+"></a>")
 
           // streamImage.attr("src", results[i].preview.medium);
 
