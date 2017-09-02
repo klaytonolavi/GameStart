@@ -82,10 +82,13 @@ $("#addGame").on("click", function(event) {
         	database.ref("/userList/" + currentUser).push({
 				game: newGame
 			});
+
+
 			$("#gameMessage").html(toTitleCase(newGame) + " has been added to your list.");
         }
         else {
         	$("#gameMessage").html(toTitleCase(newGame) + " does not exist.");
+
         }
 
     });
