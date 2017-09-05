@@ -92,4 +92,8 @@ nav .brand-logo {
 	#gameName {
 		width: 100%;
 	}
+
+	#chatOpener {
+		display: none;
+	}
 }
