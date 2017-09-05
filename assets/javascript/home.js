@@ -295,7 +295,7 @@ function deleteDuplicates() {
 
 		$.ajax({
 			method: "GET",
-			url: "https://www.reddit.com/r/php/search.json?q=" + game + "&limit=5"
+			url: "https://www.reddit.com/r/php/search.json?q=" + game + "&limit=5&sort=hot"
 		}).done(function(response) {
 			$(".reddit-row-results").empty();
 			var res = response.data;
