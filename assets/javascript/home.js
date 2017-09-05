@@ -156,8 +156,8 @@ $(function() {
 
 
 $("#post").on("click", function() {
-	if (($("#text").val() !== "") && ($("#username").val() !== "")) {
-		var msgUser = $("#username").val().trim();
+	if ($("#text").val() !== "") {
+		var msgUser = currentUser;
 		var msgText = $("#text").val().trim();
 		chatRef.push({username:msgUser, text:msgText});
 		$("#text").val("");
@@ -295,7 +295,7 @@ function deleteDuplicates() {
 
 		$.ajax({
 			method: "GET",
-			url: "https://www.reddit.com/r/php/search.json?q=" + game + "&limit=5"
+			url: "https://www.reddit.com/r/php/search.json?q=" + game + "&limit=5&sort=hot"
 		}).done(function(response) {
 			$(".reddit-row-results").empty();
 			var res = response.data;
@@ -304,11 +304,8 @@ function deleteDuplicates() {
 			for (var i = 0; i < res.children.length; i++){
 				
 				var li = $("<li>");
-				var a = $("<a>");
 				var title = res.children[i].data.title;
-				a.text(title);
-				a.attr("href", "https://www.reddit.com" + res.children[i].data.permalink);
-
+				var a = "<a href='https://www.reddit.com" + res.children[i].data.permalink + "' target='_blank'>" + title + "</a>";
 				
 				$(".reddit-row-results").append(li);
 				li.append(a);
