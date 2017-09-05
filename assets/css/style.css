@@ -13,13 +13,13 @@ body {
 }
 
 nav {
-    height: 90px;
-    line-height: 90px;
-    font-size: 24pt;
+	height: 90px;
+	line-height: 90px;
+	font-size: 24pt;
 }
 
 nav .brand-logo { 
-    font-size: 3.6rem; 
+	font-size: 3.6rem; 
 }
 
 .navbar-fixed {
@@ -29,6 +29,11 @@ nav .brand-logo {
 .footerChip {
 	width: 130px;
 	text-align: center;
+}
+
+.gameBtn, .formBtn {
+	margin-right: 3px;
+	margin-bottom: 3px;
 }
 
 #buttonList {
@@ -46,4 +51,56 @@ nav .brand-logo {
 #topCardSearch {
 	display: none;
 	text-align: center;
+
+}
+
+.container-sign-in {
+	display: block;	
+}
+
+.container-twitch {
+	display: none;
+	
+}
+
+.container-reddit {
+	display: none;
+}
+
+#twitch-row {
+	overflow-y: scroll;
+	height: 300px;
+}
+
+.ui-widget {
+	font-family: "Montserrat", sans-serif;
+}
+
+.ui-widget-header {
+	background-color: black;
+	color: white;
+	font-size: 24pt;
+	}
+
+body {
+	background-color: #dddddd;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.msg {
+	margin: 5px 0;
+	padding: 5px;
+	width: 100%;
+	background-color: #efefef;
+}
+
+#username, #text {
+	margin: 5px 0px;
+}
+
+
+@media (max-width: 425px) {
+	#gameName {
+		width: 100%;
+	}
 }

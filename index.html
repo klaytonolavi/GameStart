@@ -6,23 +6,24 @@
 		<title>GameStart</title>
 
 
-		<!-- Compiled and minified CSS -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-
 		<!--Import Google Icon Font-->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 		<!-- Import Google Montserrat Font -->
 		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
-		<!--Let browser know website is optimized for mobile-->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
 		<!-- jQuery -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-		<!-- Compiled and minified JavaScript -->
+		<!-- jQuery UI -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+		<!-- Compiled and minified Materialize JavaScript -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+		<!-- Compiled and minified Materialize CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
 		<!-- Local CSS -->
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -30,6 +31,8 @@
 		<!-- Firebase -->
 		<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
 
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 	</head>
 
@@ -38,8 +41,15 @@
 			<nav class="top-nav black">
 				<div class="container">
 					<div class="nav-wrapper">
+<<<<<<< HEAD
 						<a class="brand-logo" href="index.html"><span class="red-text">Game</span>Start</a>
 						<div class="right">
+=======
+						<div class="left">
+							<a class="brand-logo" href="index.html"><span class="red-text">Game</span>Start</a>
+						</div>
+						<div class="right hide-on-med-and-down">
+>>>>>>> 65cc1439c13cf6e07dd794bb1f89ce731b4e4316
 							Get Your Game to Level 1
 						</div>
 					</div>
@@ -61,16 +71,16 @@
 							<span id="welcomeMessage"></span>
 							<br>Edit your games list below.<br>
 							<input id="gameName" type="text">
-							<button id="addGame">Add</button>
-							<button id="removeGame">Remove</button><br>
-							<span id="gameMessage">Game message</span>
+							<a class="waves-effect waves-red btn red" id="addGame">Add</a>
+							<a class="waves-effect waves-red btn red" id="removeGame">Remove</a><br>
+							<span id="gameMessage"></span>
 						</div>
 						<div class="card-panel" id="buttonList">
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="container">
+			<div class="container container-gaming-news">
 				<div class="row">
 					<div class="col s12 m6">
 						<div class="card black" id="leftCard">
@@ -85,8 +95,25 @@
 							</div>
 						</div>
 					</div>
+				<!-- DIV for Reddit API -->
+				<div class="container container-reddit">
+					<div class="row">
+						<div class="col s12 m6">
+							<div class="card black" id="leftCard">
+								<div class="card-content white-text"><span class="card-title">Learn From the Gaming Community</span>
+									<div class="row" id="redditRow">
+										<div class="reddit-row-results">
+											<!-- Reddit results here -->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
 					<!-- new div for twitch API content -->
+<<<<<<< HEAD
 				<div class="container-twitch">
 					<div class="col s12 m6">
 						<div class="card black" id="rightCard">
@@ -99,13 +126,30 @@
 									
 										</div>
 									</form>
+=======
+				<div class="container container-twitch">
+					<div class="row">
+						<div class="col s12 m6">
+							<div class="card black" id="rightCard">
+								<div class="card-content white-text">
+									<span class="card-title">Learn from the Pros</span>
+									<div class="row" id="twitch-row">
+										<div class="row-results">
+										<!-- twitch results will go here -->
+										</div>
+									</div>
+>>>>>>> 65cc1439c13cf6e07dd794bb1f89ce731b4e4316
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 
+<<<<<<< HEAD
 				<div class="container-sign-in">
+=======
+				<div class="container container-sign-in">
+>>>>>>> 65cc1439c13cf6e07dd794bb1f89ce731b4e4316
 					<div class="col s12 m6">
 						<div class="card black" id="rightCard">
 							<div class="card-content white-text">
@@ -121,7 +165,7 @@
 										</div>
 										<div class="row">
 											<div class="input-field col s12">
-												<a id="submitBtn" class="btn waves-effect waves-light red col">Submit</a>
+												<a id="submitBtn" class="btn waves-effect waves-red red col">Submit</a>
 											</div>
 										</div>
 									</form>
@@ -138,14 +182,22 @@
 					<div class="col l6 s12">
 						<h5 class="white-text">Help <span class="red-text">Game</span>Start Grow</h5>
 						<p class="grey-text text-lighten-4">If you have ideas for how <span class="red-text">Game</span>Start can be improved, let us know!  Click on <a class="modal-trigger" href="#suggestionsModal">Suggestions</a> and give us a hint.</p>
+<<<<<<< HEAD
 						<p class="grey-text text-lighten-4">Chat is coming!  Talk to other players online, discuss the games you're playing, and even find new people to game with.</p>
+=======
+						<p class="grey-text text-lighten-4">Mobile Chat is coming!  Talk to other players online, discuss the games you're playing, and even find new people to game with, all from your phone.</p>
+>>>>>>> 65cc1439c13cf6e07dd794bb1f89ce731b4e4316
 					</div>
 					<div class="col l4 offset-l2 s12">
 						<h5 class="white-text">Stuff to Click</h5>
 						<ul>
 							<li>
 								<a class="modal-trigger" href="#supportModal">
+<<<<<<< HEAD
 									<div class="chip footerChip">
+=======
+									<div class="chip footerChip waves-effect waves-red #dddddd">
+>>>>>>> 65cc1439c13cf6e07dd794bb1f89ce731b4e4316
 										<img src="assets/images/support-float-icon.jpg" alt="Support">
 										Support
 									</div>
@@ -153,16 +205,34 @@
 							</li>
 							<li>
 								<a class="modal-trigger" href="#suggestionsModal">
+<<<<<<< HEAD
 									<div class="chip footerChip">
+=======
+									<div class="chip footerChip waves-effect waves-red #dddddd">
+>>>>>>> 65cc1439c13cf6e07dd794bb1f89ce731b4e4316
 										<img src="assets/images/idea.jpg" alt="Suggestions">
 										Suggestions
 									</div>
 								</a>
 							</li>
 							<li>
+<<<<<<< HEAD
 								<div class="chip footerChip">
 									<img src="assets/images/about-us.JPG" alt="About Us">
 									<a class="black-text" href="about-us.html">About Us</a>
+=======
+								<a class="modal-trigger" href="#aboutUsModal">
+									<div class="chip footerChip waves-effect waves-red #dddddd">
+										<img src="assets/images/about-us.JPG" alt="About Us">
+										About Us
+									</div>
+								</a>
+							</li>
+							<li>
+								<div class="chip footerChip waves-effect waves-red #dddddd" id="chatOpener">
+									<img src="assets/images/icon_chat.jpg" alt="Chat">
+									Chat
+>>>>>>> 65cc1439c13cf6e07dd794bb1f89ce731b4e4316
 								</div>
 							</li>
 						</ul>
@@ -187,13 +257,79 @@
 						<div id="suggestionsModal" class="modal black-text">
 							<div class="modal-content">
 								<h4>Help Improve <span class="red-text">Game</span>Start!</h4>
+<<<<<<< HEAD
 								<p>If you have an idea for a new feature let us know!  Click on the link below to send us email!</p>
 								<a href="mailto:not@your.concern.com">Suggestions</a>
+=======
+								<p>If you have an idea for a new feature let us know!  Fill out the form below to send us email!</p>
+								<form action="mailto:dhwyll@gmail.com" method="post" enctype="text/plain">
+									<div class="row">
+										<div class="input-field col s12">
+											<i class="material-icons prefix">insert_comment</i>
+											<textarea id="emailComment" rows="50"></textarea>
+											<label for="emailComment">&nbsp;&nbsp;Comments</label>
+										</div>
+										<input class="btn waves-effect waves-red red col formBtn" type="submit" value="Send">
+										<input class="btn waves-effect waves-red red col formBtn" type="reset" value="Reset">
+									</div>
+								</form>
+>>>>>>> 65cc1439c13cf6e07dd794bb1f89ce731b4e4316
 							</div>
 							<div class="modal-footer">
 								<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cool</a>
 							</div>
 						</div>
+<<<<<<< HEAD
+=======
+
+						<!-- About Us Modal -->
+						<div id="aboutUsModal" class="modal black-text">
+							<div class="modal-content">
+								<h4>About Us</h4>
+								<p>We're four guys who decided to take a web development boot camp and got thrown together to do a project.  Here's to learning something!</p>
+								<p><span style="font-weight: bold" class="red-text">Brian P. Evans:</span>  Mathematician at Large and Actor for Hire, Brian was in Tech Support and Product Management for nigh on 30 years when the contract got reduced and he got laid off.  Now, he's learning web development to get a new job.  Don't like the front end design?  Blame him.</p>
+								<p><span style="font-weight: bold" class="red-text">Klayton Liekkio:</span> Entry level full stack web developer. Surfer and rock climber from Carlsbad, CA. Spends too much time on Twitch and Reddit. Responsible for Twitch API functionality.</p>
+								<p><span style="font-weight: bold" class="red-text">Kevin Lussier:</span></p>
+								<p><span style="font-weight: bold" class="red-text">Pearce Moffat:</span></p>
+							</div>
+							<div class="modal-footer">
+								<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cool</a>
+							</div>
+						</div>
+<div id="dialog" title="Chat with Gamers">
+	<div class="row">
+		<div class="card-panel">
+		  <div class="card black" id="rightCard">
+			<div class="card-content white-text">
+			  <div class="row">
+				<form class="col s12">
+				  <div class="row">
+					<div class="input-field col s12">
+					  <label for="username">Name</label>
+					  <input id="username" type="text" class="validate">
+					</div>
+				  </div>
+				  <div class="row">
+					<div class="input-field col s12">
+					  <label for="text">Message</label>
+					  <input id="text" type="text" class="validate">
+					</div>
+				  </div>
+				  <div class="row">
+					<div class="input-field col s12">
+					  <a id="post" class="btn waves-effect waves-red red white-text col">Post</a>
+					</div>
+				  </div>
+				</form>
+			  </div>
+			</div>
+		  </div>
+		  <div id="results"></div>
+		</div>
+	</div>
+</div>
+
+>>>>>>> 65cc1439c13cf6e07dd794bb1f89ce731b4e4316
 					</div>
 				</div>
 			</div>
