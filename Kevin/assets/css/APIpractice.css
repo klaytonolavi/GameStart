@@ -1,3 +1,44 @@
+/* Set the style to border-box */
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+	background-color: #dddddd;
+	font-family: 'Montserrat', sans-serif;
+}
+
+nav {
+    height: 90px;
+    line-height: 90px;
+    font-size: 24pt;
+}
+
+nav .brand-logo { 
+    font-size: 3.6rem; 
+}
+
+.navbar-fixed {
+	margin-bottom: 50px;
+}
+
+.footerChip {
+	width: 130px;
+	text-align: center;
+}
+
+#topCardHome {
+	display: block;
+}
+
+#topCardSearch {
+	display: none;
+}
+
 span {
   display: inline-block;
   margin-right: 20px;
@@ -5,4 +46,35 @@ span {
 
 div, .results {
   margin-top: 30px;
+}
+
+/*#gamingNews {
+	margin-top: 30px;
+}*/
+
+.container-gaming-news{
+
+}
+
+.container-reddit {
+	display:none;
+}
+
+#redditRow {
+	overflow-y: scroll;
+	height: 300px;
+}
+
+.container-sign-in {
+	
+}
+
+.container-twitch {
+	display: none;
+	
+}
+
+#twitch-row {
+	overflow-y: scroll;
+	height: 300px;
 }
