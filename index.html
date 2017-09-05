@@ -6,23 +6,24 @@
 		<title>GameStart</title>
 
 
-		<!-- Compiled and minified CSS -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-
 		<!--Import Google Icon Font-->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 		<!-- Import Google Montserrat Font -->
 		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
-		<!--Let browser know website is optimized for mobile-->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
 		<!-- jQuery -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-		<!-- Compiled and minified JavaScript -->
+		<!-- jQuery UI -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+		<!-- Compiled and minified Materialize JavaScript -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+		<!-- Compiled and minified Materialize CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
 		<!-- Local CSS -->
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -30,6 +31,8 @@
 		<!-- Firebase -->
 		<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
 
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 	</head>
 
@@ -72,7 +75,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="container">
+			<div class="container container-gaming-news">
 				<div class="row">
 					<div class="col s12 m6">
 						<div class="card black" id="leftCard">
@@ -87,9 +90,25 @@
 							</div>
 						</div>
 					</div>
+				<!-- DIV for Reddit API -->
+				<div class="container container-reddit">
+					<div class="row">
+						<div class="col s12 m6">
+							<div class="card black" id="leftCard">
+								<div class="card-content white-text"><span class="card-title">Learn From the Gaming Community</span>
+									<div class="row" id="redditRow">
+										<div class="reddit-row-results">
+											<!-- Reddit results here -->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
 					<!-- new div for twitch API content -->
-				<div class="container-twitch">
+				<div class="container container-twitch">
 					<div class="row">
 						<div class="col s12 m6">
 							<div class="card black" id="rightCard">
@@ -106,7 +125,7 @@
 					</div>
 				</div>
 
-				<div class="container-sign-in">
+				<div class="container container-sign-in">
 					<div class="col s12 m6">
 						<div class="card black" id="rightCard">
 							<div class="card-content white-text">
@@ -139,7 +158,7 @@
 					<div class="col l6 s12">
 						<h5 class="white-text">Help <span class="red-text">Game</span>Start Grow</h5>
 						<p class="grey-text text-lighten-4">If you have ideas for how <span class="red-text">Game</span>Start can be improved, let us know!  Click on <a class="modal-trigger" href="#suggestionsModal">Suggestions</a> and give us a hint.</p>
-						<p class="grey-text text-lighten-4">Chat is coming!  Talk to other players online, discuss the games you're playing, and even find new people to game with.</p>
+						<p class="grey-text text-lighten-4">Mobile Chat is coming!  Talk to other players online, discuss the games you're playing, and even find new people to game with, all from your phone.</p>
 					</div>
 					<div class="col l4 offset-l2 s12">
 						<h5 class="white-text">Stuff to Click</h5>
@@ -167,6 +186,12 @@
 										About Us
 									</div>
 								</a>
+							</li>
+							<li>
+								<div class="chip footerChip waves-effect waves-red #dddddd" id="chatOpener">
+									<img src="assets/images/icon_chat.jpg" alt="Chat">
+									Chat
+								</div>
 							</li>
 						</ul>
 
@@ -222,7 +247,38 @@
 								<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cool</a>
 							</div>
 						</div>
-
+<div id="dialog" title="Chat with Gamers">
+	<div class="row">
+		<div class="card-panel">
+		  <div class="card black" id="rightCard">
+			<div class="card-content white-text">
+			  <div class="row">
+				<form class="col s12">
+				  <div class="row">
+					<div class="input-field col s12">
+					  <label for="username">Name</label>
+					  <input id="username" type="text" class="validate">
+					</div>
+				  </div>
+				  <div class="row">
+					<div class="input-field col s12">
+					  <label for="text">Message</label>
+					  <input id="text" type="text" class="validate">
+					</div>
+				  </div>
+				  <div class="row">
+					<div class="input-field col s12">
+					  <a id="post" class="btn waves-effect waves-red red white-text col">Post</a>
+					</div>
+				  </div>
+				</form>
+			  </div>
+			</div>
+		  </div>
+		  <div id="results"></div>
+		</div>
+	</div>
+</div>
 
 					</div>
 				</div>
