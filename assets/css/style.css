@@ -87,6 +87,10 @@ nav .brand-logo {
 	margin: 5px 0px;
 }
 
+#switchToSignUp, #switchToSignIn {
+	cursor: pointer;
+}
+
 
 @media (max-width: 425px) {
 	#gameName {
