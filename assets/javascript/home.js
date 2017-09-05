@@ -35,61 +35,68 @@ $(document).ready(function() {
     });
 
     $("#signUpBtn").on("click", function(event) {
-    	event.preventDefault();
-    	console.log("sign up clicked");
+        event.preventDefault();
+        console.log("sign up clicked");
 
-    	currentEmail = $("#signUpEmail").val().trim().toLowerCase();
-    	currentUser = currentEmail.slice(0,-4);
-    	currentPass = $("#signUpPass").val().trim();
-    	userName = $("#name").val().trim();
+        currentEmail = $("#signUpEmail").val().trim().toLowerCase();
+        currentUser = currentEmail.slice(0, -4);
+        currentPass = $("#signUpPass").val().trim();
+        userName = $("#name").val().trim();
 
-    	firebase.auth().createUserWithEmailAndPassword(currentEmail, currentPass).then(function() {
-    		var user = firebase.auth().currentUser;
+        firebase.auth().createUserWithEmailAndPassword(currentEmail, currentPass).then(function() {
+            var user = firebase.auth().currentUser;
 
-			user.updateProfile({
-			  displayName: userName
-			}).then(function() {
-				// hide sign in div
-		        $(".container-sign-in").hide();
-		        // show twitch div
-		        $(".container-twitch").show();
-			}).catch(function(error) {
-			});
+            user.updateProfile({
+                displayName: userName
+            }).then(function() {
+                // hide sign in div
+				$("#sign-in").hide();
+				// hide gaming news div
+				$("#gaming-news").hide();
+				// show twitch div
+				$("#twitch").show();
+				// show reddit div
+				$("#reddit").show();	
+            }).catch(function(error) {});
 
-			updateUser();
-			$("#welcomeMessage").html("Hello, " + userName + ". Welcome to GameStart.");
-			$("#topCardHome").css("display", "none");
+            updateUser();
+            $("#welcomeMessage").html("Hello, " + userName + ". Welcome to GameStart.");
+            $("#topCardHome").css("display", "none");
             $("#topCardSearch").css("display", "block");
             $("#buttonList").css("display", "block");
             $("#chatOpener").show();
 
-    	}).catch(function(error) {
-		  // Handle Errors here.
-		  var errorCode = error.code;
-		  var errorMessage = error.message;
-		  console.log(errorMessage);
-		  $(".errorMsg").html(errorMessage);
-		  $("#signUpEmail, #signUpPass, #name").val("");
-		});
+        }).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorMessage);
+            $(".errorMsg").html(errorMessage);
+            $("#signUpEmail, #signUpPass, #name").val("");
+        });
     });
 
     $("#signInBtn").on("click", function(event) {
         event.preventDefault();
 
         currentEmail = $("#signInEmail").val().trim().toLowerCase();
-        currentUser = currentEmail.slice(0,-4);
+        currentUser = currentEmail.slice(0, -4);
         currentPass = $("#signInPass").val().trim();
 
         firebase.auth().signInWithEmailAndPassword(currentEmail, currentPass).then(function() {
-        	// hide sign in div
-	        $(".container-sign-in").hide();
-	        // show twitch div
-	        $(".container-twitch").show();
+            // hide sign in div
+			$("#sign-in").hide();
+			// hide gaming news div
+			$("#gaming-news").hide();
+			// show twitch div
+			$("#twitch").show();
+			// show reddit div
+			$("#reddit").show();
 
-	        var user = firebase.auth().currentUser;
-			userName = user.displayName;
+            var user = firebase.auth().currentUser;
+            userName = user.displayName;
 
-			updateUser();
+            updateUser();
             $("#welcomeMessage").html("Welcome back, " + userName + ".");
             $("#topCardHome").css("display", "none");
             $("#topCardSearch").css("display", "block");
@@ -97,22 +104,32 @@ $(document).ready(function() {
             $("#chatOpener").show();
 
         }).catch(function(error) {
-		  // Handle Errors here.
-		  var errorCode = error.code;
-		  var errorMessage = error.message;
-		  console.log(errorMessage);
-		  $(".errorMsg").html(errorMessage);
-		  $("#signInEmail, #signInPass").val("");
-		});
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorMessage);
+            $(".errorMsg").html(errorMessage);
+            $("#signInEmail, #signInPass").val("");
+        });
     });
 
+    $("#switchToSignUp").on("click", function() {
+    	$("#signUp").show();
+    	$("#signIn").hide();
+    })
+
+    $("#switchToSignIn").on("click", function() {
+    	$("#signUp").hide();
+    	$("#signIn").show();
+    })
+
     firebase.auth().onAuthStateChanged(function(user) {
-	  if (user) {
-	    // User is signed in.
-	  } else {
-	    // User is signed out.
-	  }
-	});
+        if (user) {
+            // User is signed in.
+        } else {
+            // User is signed out.
+        }
+    });
 
     $("#addGame").on("click", function(event) {
         event.preventDefault();
@@ -139,7 +156,7 @@ $(document).ready(function() {
 
                 $("#gameMessage").html(toTitleCase(newGame) + " has been added to your list.");
             } else {
-                $("#gameMessage").html(toTitleCase(newGame) + " does not exist.");
+                $("#gameMessage").html("Cannot find " + toTitleCase(newGame) + " on Twitch.");
 
             }
 
@@ -200,8 +217,8 @@ $(document).ready(function() {
 
 
     $("#post").on("click", function() {
-        if (($("#text").val() !== "") && ($("#username").val() !== "")) {
-            var msgUser = $("#username").val().trim();
+        if ($("#text").val() !== "") {
+            var msgUser = userName;
             var msgText = $("#text").val().trim();
             chatRef.push({ username: msgUser, text: msgText });
             $("#text").val("");
@@ -284,16 +301,8 @@ $(document).ready(function() {
         });
     }
 
-    $("#switchToSignUp").on("click", function() {
-    	$("#signUp").show();
-    	$("#signIn").hide();
-    })
 
-    $("#switchToSignIn").on("click", function() {
-    	$("#signUp").hide();
-    	$("#signIn").show();
-    })
-
+    // submit button to search the twitch API for whatever is inputed into search input box
     $("body").on("click", ".gameBtn", function(e) {
         e.preventDefault();
         $(".streamDiv").empty();
@@ -338,9 +347,33 @@ $(document).ready(function() {
                 streamDiv.append(streamImage);
 
                 // prepending all of the results into the results-display div
-                $(".row-results").append(streamDiv);
+                $(".twitch-row-results").append(streamDiv);
 
             }
+
+        });
+
+        $.ajax({
+            method: "GET",
+            url: "https://www.reddit.com/r/php/search.json?q=" + game + "&limit=5&sort=hot"
+        }).done(function(response) {
+            $(".reddit-row-results").empty();
+            var res = response.data;
+            console.log(res);
+            $(".reddit-row-results").append("<ul>");
+            for (var i = 0; i < res.children.length; i++) {
+
+                var li = $("<li>");
+                var title = res.children[i].data.title;
+                var a = "<a href='https://www.reddit.com" + res.children[i].data.permalink + "' target='_blank'>" + title + "</a>";
+
+                $(".reddit-row-results").append(li);
+                li.append(a);
+                li.addClass("reddit-results");
+
+            }
+            $(".reddit-row-results").append("</ul>");
+            console.log(res);
 
         });
     });
