@@ -36,6 +36,10 @@ nav .brand-logo {
 	margin-bottom: 3px;
 }
 
+.errorMsg {
+	color: red;
+}
+
 #buttonList {
 	display: none;
 }

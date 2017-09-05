@@ -54,7 +54,6 @@ $(document).ready(function() {
 		        // show twitch div
 		        $(".container-twitch").show();
 			}).catch(function(error) {
-			  console.log(errorCode + " " +errorMessage);
 			});
 
 			updateUser();
@@ -68,16 +67,18 @@ $(document).ready(function() {
 		  // Handle Errors here.
 		  var errorCode = error.code;
 		  var errorMessage = error.message;
-		  console.log(errorCode + " " +errorMessage);
+		  console.log(errorMessage);
+		  $(".errorMsg").html(errorMessage);
+		  $("#signUpEmail, #signUpPass, #name").val("");
 		});
     });
 
     $("#signInBtn").on("click", function(event) {
         event.preventDefault();
 
-        currentEmail = $("#email").val().trim().toLowerCase();
+        currentEmail = $("#signInEmail").val().trim().toLowerCase();
         currentUser = currentEmail.slice(0,-4);
-        currentPass = $("#pass").val().trim();
+        currentPass = $("#signInPass").val().trim();
 
         firebase.auth().signInWithEmailAndPassword(currentEmail, currentPass).then(function() {
         	// hide sign in div
@@ -99,7 +100,9 @@ $(document).ready(function() {
 		  // Handle Errors here.
 		  var errorCode = error.code;
 		  var errorMessage = error.message;
-		  console.log(errorCode + " " +errorMessage);
+		  console.log(errorMessage);
+		  $(".errorMsg").html(errorMessage);
+		  $("#signInEmail, #signInPass").val("");
 		});
     });
 
