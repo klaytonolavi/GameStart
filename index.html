@@ -57,10 +57,6 @@
 					<div class="col s12">
 						<div class="card-panel" id="topCardHome">
 							Welcome to <span class="red-text">Game</span>Start!  Here you can find information about your favorite games.  Never played it before?  That's why you're here!  Do a search to find out the latest <a href="https://www.reddit.com" target="_blank">Reddit</a> threads regarding your game and then find players on <a href="https://www.twitch.tv" target=")blank">Twitch</a> who can give you a first-hand experience on how to play the game.  Get your game to Level 1!
-							  <!-- Modal Trigger -->
-  
-
-
 						</div>
 						<div class="card-panel" id="topCardSearch">
 							<span id="welcomeMessage"></span>
@@ -75,10 +71,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="container container-gaming-news">
+			<div class="container">
 				<div class="row">
 					<div class="col s12 m6">
-						<div class="card black" id="leftCard">
+						<div class="card black" id="gaming-news">
 							<div class="card-content white-text">
 								<span class="card-title">Latest Gaming News from IGN</span>
 								<div id="gamingNews">
@@ -90,44 +86,9 @@
 							</div>
 						</div>
 					</div>
-				<!-- DIV for Reddit API -->
-				<div class="container container-reddit">
-					<div class="row">
-						<div class="col s12 m6">
-							<div class="card black" id="leftCard">
-								<div class="card-content white-text"><span class="card-title">Learn From the Gaming Community</span>
-									<div class="row" id="redditRow">
-										<div class="reddit-row-results">
-											<!-- Reddit results here -->
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
 
-					<!-- new div for twitch API content -->
-				<div class="container container-twitch">
-					<div class="row">
-						<div class="col s12 m6">
-							<div class="card black" id="rightCard">
-								<div class="card-content white-text">
-									<span class="card-title">Learn from the Pros</span>
-									<div class="row" id="twitch-row">
-										<div class="row-results">
-										<!-- twitch results will go here -->
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="container container-sign-in">
 					<div class="col s12 m6">
-						<div class="card black" id="rightCard">
+						<div class="card black" id="sign-in">
 							<div class="card-content white-text">
 								<span class="card-title">Sign In or Sign Up</span>
 								<div class="row">
@@ -145,6 +106,35 @@
 											</div>
 										</div>
 									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<!-- DIV for Reddit API -->
+					<div class="col s12 m6">
+						<div class="card black" id="reddit">
+							<div class="card-content white-text">
+								<span class="card-title">Learn From the Gaming Community</span>
+								<div class="reddit-row-results">
+									<!-- Reddit results here -->
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- new div for twitch API content -->
+					<div class="col s12 m6">
+						<div class="card black" id="twitch">
+							<div class="card-content white-text">
+								<span class="card-title">Learn from the Pros</span>
+								<div class="row" id="twitch-row">
+									<div class="twitch-row-results">
+									<!-- twitch results will go here -->
+									</div>
 								</div>
 							</div>
 						</div>
