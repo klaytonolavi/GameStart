@@ -293,6 +293,34 @@ function deleteDuplicates() {
 
 		});
 
+		$.ajax({
+			method: "GET",
+			url: "https://www.reddit.com/r/php/search.json?q=" + game + "&limit=5"
+		}).done(function(response) {
+			$(".reddit-row-results").empty();
+			var res = response.data;
+			console.log(res);
+			$(".reddit-row-results").append("<ul>");
+			for (var i = 0; i < res.children.length; i++){
+				
+				var li = $("<li>");
+				var a = $("<a>");
+				var title = res.children[i].data.title;
+				a.text(title);
+				a.attr("href", "https://www.reddit.com" + res.children[i].data.permalink);
+
+				
+				$(".reddit-row-results").append(li);
+				li.append(a);
+				li.addClass("reddit-results");
+				
+			}
+			$(".reddit-row-results").append("</ul>");
+			console.log(res);
+		   
+		});
+
+
 
 	});
 
