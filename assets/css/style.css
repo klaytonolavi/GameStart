@@ -36,6 +36,10 @@ nav .brand-logo {
 	margin-bottom: 3px;
 }
 
+.errorMsg {
+	color: red;
+}
+
 #buttonList, #twitch, #reddit {
 	display: none;
 }
@@ -53,8 +57,8 @@ nav .brand-logo {
 	text-align: center;
 }
 
-#reddit {
-	min-height: 108px;
+#reddit, #twitch {
+	min-height: 120px;
 }
 
 #twitch-row {
