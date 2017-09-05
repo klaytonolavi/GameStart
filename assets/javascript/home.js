@@ -42,9 +42,13 @@ $("#submitBtn").on("click", function(event) {
 	if ($("#login").val() !== "") {
 
 		// hide sign in div
-		$(".container-sign-in").hide();
+		$("#sign-in").hide();
+		// hide gaming news div
+		$("#gaming-news").hide();
 		// show twitch div
-		$(".container-twitch").show();
+		$("#twitch").show();
+		// show reddit div
+		$("#reddit").show();
 
 		currentUser = toTitleCase($("#login").val().trim());
 
@@ -57,10 +61,10 @@ $("#submitBtn").on("click", function(event) {
 				$("#welcomeMessage").html("Hello, "+currentUser+". Welcome to GameStart.");
 			}
 		});
-		$("#topCardHome").css("display", "none");
-		$("#topCardSearch").css("display", "block");
-		$("#buttonList").css("display", "block");
-		$("#chatOpener").show()
+		$("#topCardHome").hide();
+		$("#topCardSearch").show();
+		$("#buttonList").show();
+		$("#chatOpener").show();
 	}
 });
 
@@ -283,7 +287,7 @@ function deleteDuplicates() {
 			  streamDiv.append(streamImage);
 
 				// prepending all of the results into the results-display div
-			  $(".row-results").append(streamDiv);
+			  $(".twitch-row-results").append(streamDiv);
 
 			}
 

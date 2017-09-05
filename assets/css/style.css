@@ -36,7 +36,7 @@ nav .brand-logo {
 	margin-bottom: 3px;
 }
 
-#buttonList {
+#buttonList, #twitch, #reddit {
 	display: none;
 }
 
@@ -51,25 +51,11 @@ nav .brand-logo {
 #topCardSearch {
 	display: none;
 	text-align: center;
-
-}
-
-.container-sign-in {
-	display: block;	
-}
-
-.container-twitch {
-	display: none;
-	
-}
-
-.container-reddit {
-	display: none;
 }
 
 #twitch-row {
-	overflow-y: scroll;
-	height: 300px;
+	overflow-y: auto;
+	max-height: 300px;
 }
 
 .ui-widget {
@@ -81,11 +67,6 @@ nav .brand-logo {
 	color: white;
 	font-size: 24pt;
 	}
-
-body {
-	background-color: #dddddd;
-	font-family: 'Montserrat', sans-serif;
-}
 
 .msg {
 	margin: 5px 0;
