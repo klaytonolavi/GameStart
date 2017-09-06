@@ -1,55 +1,58 @@
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyCDXTSh8I15rIl68qh5UcAxVs6buM34ZkU",
-    authDomain: "gamestart-75825.firebaseapp.com",
-    databaseURL: "https://gamestart-75825.firebaseio.com",
-    projectId: "gamestart-75825",
-    storageBucket: "",
-    messagingSenderId: "675051657577"
+	apiKey: "AIzaSyCDXTSh8I15rIl68qh5UcAxVs6buM34ZkU",
+	authDomain: "gamestart-75825.firebaseapp.com",
+	databaseURL: "https://gamestart-75825.firebaseio.com",
+	projectId: "gamestart-75825",
+	storageBucket: "",
+	messagingSenderId: "675051657577"
 };
 
 firebase.initializeApp(config);
 var database = firebase.database();
 var chatRef = database.ref("/chatData");
 var userName;
+var iLoggedIn;
 $("#chatOpener").hide();
 $("#signUp").hide();
 
 $(document).ready(function() {
 
-    $('.modal').modal();
+	$('.modal').modal();
 
-    // API call for IGN News on front page
-    $.ajax({
-        url: "https://newsapi.org/v1/articles?source=ign&sortBy=top&apiKey=99f15eb49458454290e17af6312b8797",
-        method: 'GET',
-    }).done(function(result) {
-        $("#gamingNews").append("<ul>");
-        for (var i = 0; i < 5; i++) {
-            var gameHeadline = result.articles[i].title;
-            $("#gamingNews").append('<li><a href="' + result.articles[i].url + '" target="_blank">' + gameHeadline + "</a></li>");
-        }
-        $("#gamingNews").append("</ul>");
-    }).fail(function(err) {
-        throw err;
-    });
 
-    $("#signUpBtn").on("click", function(event) {
-        event.preventDefault();
-        console.log("sign up clicked");
 
-        currentEmail = $("#signUpEmail").val().trim().toLowerCase();
-        currentUser = currentEmail.slice(0, -4);
-        currentPass = $("#signUpPass").val().trim();
-        userName = $("#name").val().trim();
+	// API call for IGN News on front page
+	$.ajax({
+		url: "https://newsapi.org/v1/articles?source=ign&sortBy=top&apiKey=99f15eb49458454290e17af6312b8797",
+		method: 'GET',
+	}).done(function(result) {
+		$("#gamingNews").append("<ul>");
+		for (var i = 0; i < 5; i++) {
+			var gameHeadline = result.articles[i].title;
+			$("#gamingNews").append('<li><a href="' + result.articles[i].url + '" target="_blank">' + gameHeadline + "</a></li>");
+		}
+		$("#gamingNews").append("</ul>");
+	}).fail(function(err) {
+		throw err;
+	});
 
-        firebase.auth().createUserWithEmailAndPassword(currentEmail, currentPass).then(function() {
-            var user = firebase.auth().currentUser;
+	$("#signUpBtn").on("click", function(event) {
+		event.preventDefault();
+		console.log("sign up clicked");
 
-            user.updateProfile({
-                displayName: userName
-            }).then(function() {
-                // hide sign in div
+		currentEmail = $("#signUpEmail").val().trim().toLowerCase();
+		currentUser = currentEmail.slice(0, -4);
+		currentPass = $("#signUpPass").val().trim();
+		userName = $("#name").val().trim();
+
+		firebase.auth().createUserWithEmailAndPassword(currentEmail, currentPass).then(function() {
+			var user = firebase.auth().currentUser;
+
+			user.updateProfile({
+				displayName: userName
+			}).then(function() {
+				// hide sign in div
 				$("#sign-in").hide();
 				// hide gaming news div
 				$("#gaming-news").hide();
@@ -57,34 +60,34 @@ $(document).ready(function() {
 				$("#twitch").show();
 				// show reddit div
 				$("#reddit").show();	
-            }).catch(function(error) {});
+			}).catch(function(error) {});
 
-            updateUser();
-            $("#welcomeMessage").html("Hello, " + userName + ". Welcome to GameStart.");
-            $("#topCardHome").css("display", "none");
-            $("#topCardSearch").css("display", "block");
-            $("#buttonList").css("display", "block");
-            $("#chatOpener").show();
+			updateUser();
+			$("#welcomeMessage").html("Hello, " + userName + ". Welcome to GameStart.");
+			$("#topCardHome").css("display", "none");
+			$("#topCardSearch").css("display", "block");
+			$("#buttonList").css("display", "block");
+			$("#chatOpener").show();
 
-        }).catch(function(error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            console.log(errorMessage);
-            $(".errorMsg").html(errorMessage);
-            $("#signUpEmail, #signUpPass, #name").val("");
-        });
-    });
+		}).catch(function(error) {
+			// Handle Errors here.
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			console.log(errorMessage);
+			$(".errorMsg").html(errorMessage);
+			$("#signUpEmail, #signUpPass, #name").val("");
+		});
+	});
 
-    $("#signInBtn").on("click", function(event) {
-        event.preventDefault();
+	$("#signInBtn").on("click", function(event) {
+		event.preventDefault();
 
-        currentEmail = $("#signInEmail").val().trim().toLowerCase();
-        currentUser = currentEmail.slice(0, -4);
-        currentPass = $("#signInPass").val().trim();
+		currentEmail = $("#signInEmail").val().trim().toLowerCase();
+		currentUser = currentEmail.slice(0, -4);
+		currentPass = $("#signInPass").val().trim();
 
-        firebase.auth().signInWithEmailAndPassword(currentEmail, currentPass).then(function() {
-            // hide sign in div
+		firebase.auth().signInWithEmailAndPassword(currentEmail, currentPass).then(function() {
+			// hide sign in div
 			$("#sign-in").hide();
 			// hide gaming news div
 			$("#gaming-news").hide();
@@ -93,288 +96,291 @@ $(document).ready(function() {
 			// show reddit div
 			$("#reddit").show();
 
-            var user = firebase.auth().currentUser;
-            userName = user.displayName;
-
-            updateUser();
-            $("#welcomeMessage").html("Welcome back, " + userName + ".");
-            $("#topCardHome").css("display", "none");
-            $("#topCardSearch").css("display", "block");
-            $("#buttonList").css("display", "block");
-            $("#chatOpener").show();
-
-        }).catch(function(error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            console.log(errorMessage);
-            $(".errorMsg").html(errorMessage);
-            $("#signInEmail, #signInPass").val("");
-        });
-    });
-
-    $("#switchToSignUp").on("click", function() {
-    	$("#signUp").show();
-    	$("#signIn").hide();
-    })
-
-    $("#switchToSignIn").on("click", function() {
-    	$("#signUp").hide();
-    	$("#signIn").show();
-    })
-
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            // User is signed in.
-        } else {
-            // User is signed out.
-        }
-    });
-
-    $("#addGame").on("click", function(event) {
-        event.preventDefault();
-
-        var newGame = $("#gameName").val().trim().toLowerCase();
-
-        var queryURL = "https://api.twitch.tv/kraken/streams/?game=" + newGame + "&limit=10";
-
-        $.ajax({
-            url: queryURL,
-            method: "GET",
-            headers: { "Client-ID": "uo6dggojyb8d6soh92zknwmi5ej1q2" }
-        }).done(function(response) {
-
-            console.log(response);
-
-            var results = response.streams;
-
-            if (results.length > 0) {
-                database.ref("/userList/" + currentUser).push({
-                    game: newGame
-                });
-
-
-                $("#gameMessage").html(toTitleCase(newGame) + " has been added to your list.");
-            } else {
-                $("#gameMessage").html("Cannot find " + toTitleCase(newGame) + " on Twitch.");
-
-            }
-
-        });
+			var user = firebase.auth().currentUser;
+			userName = user.displayName;
+
+			updateUser();
+			$("#welcomeMessage").html("Welcome back, " + userName + ".");
+			$("#topCardHome").css("display", "none");
+			$("#topCardSearch").css("display", "block");
+			$("#buttonList").css("display", "block");
+			$("#chatOpener").show();
+
+		}).catch(function(error) {
+			// Handle Errors here.
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			console.log(errorMessage);
+			$(".errorMsg").html(errorMessage);
+			$("#signInEmail, #signInPass").val("");
+		});
+	});
+
+	$("#switchToSignUp").on("click", function() {
+		$("#signUp").show();
+		$("#signIn").hide();
+	})
+
+	$("#switchToSignIn").on("click", function() {
+		$("#signUp").hide();
+		$("#signIn").show();
+	})
+
+	firebase.auth().onAuthStateChanged(function(user) {
+		if (user) {
+			// User is signed in.
+		} else {
+			// User is signed out.
+		}
+	});
+
+	$("#addGame").on("click", function(event) {
+		event.preventDefault();
+
+		var newGame = $("#gameName").val().trim().toLowerCase();
+
+		var queryURL = "https://api.twitch.tv/kraken/streams/?game=" + newGame + "&limit=10";
+
+		$.ajax({
+			url: queryURL,
+			method: "GET",
+			headers: { "Client-ID": "uo6dggojyb8d6soh92zknwmi5ej1q2" }
+		}).done(function(response) {
+
+			console.log(response);
+
+			var results = response.streams;
+
+			if (results.length > 0) {
+				database.ref("/userList/" + currentUser).push({
+					game: newGame
+				});
+
+
+				$("#gameMessage").html(toTitleCase(newGame) + " has been added to your list.");
+			} else {
+				$("#gameMessage").html("Cannot find " + toTitleCase(newGame) + " on Twitch.");
+
+			}
+
+		});
+
+
+		$("#gameName").val("");
+	});
+
+	$("#removeGame").on("click", function(event) {
+		event.preventDefault();
+
+		var newGame = $("#gameName").val().trim().toLowerCase();
+		$("#gameName").val("");
+
+		database.ref("/userList/" + currentUser).once("value").then(function(snapshot) {
+			snapshot.forEach(function(snapshotChild) {
+				if (snapshotChild.val().game === newGame) {
+					$("#gameMessage").html(toTitleCase(newGame) + " has been removed from list.");
+					database.ref("/userList/" + currentUser).child(snapshotChild.key).remove();
+					return true;
+				} else {
+					$("#gameMessage").html(newGame + " is not on your list.");
+				}
+			});
+		});
+	});
 
-
-        $("#gameName").val("");
-    });
 
-    $("#removeGame").on("click", function(event) {
-        event.preventDefault();
+	// -----
+	// This is the code that runs the Chat, from jQuery UI
 
-        var newGame = $("#gameName").val().trim().toLowerCase();
-        $("#gameName").val("");
+	$(function() {
+		$("#dialog").dialog({
+			autoOpen: false,
+			show: {
+				effect: "clip",
+				duration: 1000
+			},
+			width: 650,
+			height: 750,
+			hide: {
+				effect: "clip",
+				duration: 1000
+			},
+			create: function(event, ui) {
+				var widget = $(this).dialog("widget");
+				$(".ui-dialog-titlebar-close span", widget).removeClass("ui-icon-closethick").addClass("ui-icon-minusthick");
+			}
+
+		});
+
+		$("#chatOpener").on("click", function() {
+			iLoggedIn = moment().format("X");
+			$("#dialog").dialog("open");
+		});
+	});
+
+
+
+	$("#post").on("click", function() {
+		if ($("#text").val() !== "") {
+			var msgUser = userName;
+			var msgText = $("#text").val().trim();
+			var timeStamp = moment().format("X");
+			chatRef.push({username: msgUser, text: msgText, time: timeStamp});
+			$("#text").val("");
+		}
+	});
+
+	/** Function to add a data listener **/
+	var startListening = function() {
+		chatRef.on('child_added', function(snapshot) {
+			var msg = snapshot.val();
 
-        database.ref("/userList/" + currentUser).once("value").then(function(snapshot) {
-            snapshot.forEach(function(snapshotChild) {
-                if (snapshotChild.val().game === newGame) {
-                    $("#gameMessage").html(toTitleCase(newGame) + " has been removed from list.");
-                    database.ref("/userList/" + currentUser).child(snapshotChild.key).remove();
-                    return true;
-                } else {
-                    $("#gameMessage").html(newGame + " is not on your list.");
-                }
-            });
-        });
-    });
+			var msgUsernameElement = document.createElement("b");
+			msgUsernameElement.textContent = msg.username;
 
+			var msgTextElement = document.createElement("p");
+			msgTextElement.textContent = msg.text;
 
-    // -----
-    // This is the code that runs the Chat, from jQuery UI
+			var msgElement = document.createElement("div");
+			msgElement.appendChild(msgUsernameElement);
+			msgElement.appendChild(msgTextElement);
 
-    $(function() {
-        $("#dialog").dialog({
-            autoOpen: false,
-            show: {
-                effect: "clip",
-                duration: 1000
-            },
-            width: 650,
-            height: 750,
-            hide: {
-                effect: "clip",
-                duration: 1000
-            },
-            create: function(event, ui) {
-                var widget = $(this).dialog("widget");
-                $(".ui-dialog-titlebar-close span", widget).removeClass("ui-icon-closethick").addClass("ui-icon-minusthick");
-            }
-
-        });
-
-        $("#chatOpener").on("click", function() {
-            $("#dialog").dialog("open");
-        });
-    });
+			msgElement.className = "msg";
+			if (iLoggedIn <= msg.time) {
+				$("#results").prepend(msgElement);
+			}
+		});
+	}
 
-
-
-    $("#post").on("click", function() {
-        if ($("#text").val() !== "") {
-            var msgUser = userName;
-            var msgText = $("#text").val().trim();
-            chatRef.push({ username: msgUser, text: msgText });
-            $("#text").val("");
-        }
-    });
+	// Begin listening for data
+	startListening();
 
-    /** Function to add a data listener **/
-    var startListening = function() {
-        chatRef.on('child_added', function(snapshot) {
-            var msg = snapshot.val();
+	// End Chat Code
+	// -----
 
-            var msgUsernameElement = document.createElement("b");
-            msgUsernameElement.textContent = msg.username;
 
-            var msgTextElement = document.createElement("p");
-            msgTextElement.textContent = msg.text;
 
-            var msgElement = document.createElement("div");
-            msgElement.appendChild(msgUsernameElement);
-            msgElement.appendChild(msgTextElement);
+	function toTitleCase(str) {
+		return str.replace(/([^\W_]+[^\s-]*) */g, function(txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+	}
 
-            msgElement.className = "msg";
-            $("#results").prepend(msgElement);
-        });
-    }
 
-    // Begin listening for data
-    startListening();
+	function updateUser() {
 
-    // End Chat Code
-    // -----
+		database.ref("/userList/" + currentUser).on("value", function(snapshot) {
+			deleteDuplicates();
+			var buttonArray = [];
 
+			snapshot.forEach(function(snapshotChild) {
+				buttonArray.push(snapshotChild.val().game);
+			});
 
+			updateButtons(buttonArray);
 
-    function toTitleCase(str) {
-        return str.replace(/([^\W_]+[^\s-]*) */g, function(txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
-    }
+		});
+	}
 
+	function updateButtons(arr) {
 
-    function updateUser() {
+		//Clear the button list to be refilled
+		$("#buttonList").empty();
 
-        database.ref("/userList/" + currentUser).on("value", function(snapshot) {
-            deleteDuplicates();
-            var buttonArray = [];
+		//Sort the array alphabetically
+		arr.sort();
 
-            snapshot.forEach(function(snapshotChild) {
-                buttonArray.push(snapshotChild.val().game);
-            });
+		//Refill the button list
+		for (var i = 0; i < arr.length; i++) {
+			$("#buttonList").append('<a class="waves-effect waves-red btn red gameBtn" id="' + arr[i] + '">' + arr[i] + '</a>');
+		}
+	}
 
-            updateButtons(buttonArray);
+	function deleteDuplicates() {
+		database.ref("/userList/" + currentUser).once("value").then(function(snapshot) {
+			var testArray = [];
+			snapshot.forEach(function(snapshotChild) {
+				if (testArray.indexOf(snapshotChild.val().game) < 0) {
+					testArray.push(snapshotChild.val().game);
+				} else {
+					$("#gameMessage").html(toTitleCase(snapshotChild.val().game) + " is already on your list");
+					database.ref("/userList/" + currentUser).child(snapshotChild.key).remove();
+				}
+			});
+		});
+	}
 
-        });
-    }
 
-    function updateButtons(arr) {
+	// submit button to search the twitch API for whatever is inputed into search input box
+	$("body").on("click", ".gameBtn", function(e) {
+		e.preventDefault();
+		$(".streamDiv").empty();
+		var game = $(this).attr("id");
+		var queryURL = "https://api.twitch.tv/kraken/streams/?game=" + game + "&limit=10";
 
-        //Clear the button list to be refilled
-        $("#buttonList").empty();
 
-        //Sort the array alphabetically
-        arr.sort();
+		$.ajax({
+			url: queryURL,
+			method: "GET",
+			headers: { "Client-ID": "uo6dggojyb8d6soh92zknwmi5ej1q2" }
+		}).done(function(response) {
 
-        //Refill the button list
-        for (var i = 0; i < arr.length; i++) {
-            $("#buttonList").append('<a class="waves-effect waves-red btn red gameBtn" id="' + arr[i] + '">' + arr[i] + '</a>');
-        }
-    }
+			console.log(response);
+			console.log(response.streams.length);
 
-    function deleteDuplicates() {
-        database.ref("/userList/" + currentUser).once("value").then(function(snapshot) {
-            var testArray = [];
-            snapshot.forEach(function(snapshotChild) {
-                if (testArray.indexOf(snapshotChild.val().game) < 0) {
-                    testArray.push(snapshotChild.val().game);
-                } else {
-                    $("#gameMessage").html(toTitleCase(snapshotChild.val().game) + " is already on your list");
-                    database.ref("/userList/" + currentUser).child(snapshotChild.key).remove();
-                }
-            });
-        });
-    }
+			var results = response.streams;
 
+			// for loop to search through the 10 results
+			for (var i = 0; i < results.length; i++) {
 
-    // submit button to search the twitch API for whatever is inputed into search input box
-    $("body").on("click", ".gameBtn", function(e) {
-        e.preventDefault();
-        $(".streamDiv").empty();
-        var game = $(this).attr("id");
-        var queryURL = "https://api.twitch.tv/kraken/streams/?game=" + game + "&limit=10";
+				var streamDiv = $("<div class='streamDiv'>");
 
+				// gets the results info for the channel display name and URL
+				var streamName = results[i].channel.display_name;
+				var streamLink = results[i].channel.url;
 
-        $.ajax({
-            url: queryURL,
-            method: "GET",
-            headers: { "Client-ID": "uo6dggojyb8d6soh92zknwmi5ej1q2" }
-        }).done(function(response) {
+				// making tags for the streamName and streamLink
+				var pName = $("<p>").text("Streamer: " + streamName);
 
-            console.log(response);
-            console.log(response.streams.length);
+				// var p = $("<p>").html("<a href="+streamLink+ "target='_blank'>"+streamLink+"</a>");
 
-            var results = response.streams;
+				// making an img div for the thumbnail to the stream
+				var streamImage = $("<div>");
+				streamImage.html("<a href=" + streamLink + " target='_blank'>" + "<img style='width: 95%' src=" + results[i].preview.medium + "></a>")
 
-            // for loop to search through the 10 results
-            for (var i = 0; i < results.length; i++) {
+				// streamImage.attr("src", results[i].preview.medium);
 
-                var streamDiv = $("<div class='streamDiv'>");
+				// appending the streamDiv for thumbnail, name and link
+				streamDiv.append(pName);
 
-                // gets the results info for the channel display name and URL
-                var streamName = results[i].channel.display_name;
-                var streamLink = results[i].channel.url;
+				streamDiv.append(streamImage);
 
-                // making tags for the streamName and streamLink
-                var pName = $("<p>").text("Streamer: " + streamName);
+				// prepending all of the results into the results-display div
+				$(".twitch-row-results").append(streamDiv);
 
-                // var p = $("<p>").html("<a href="+streamLink+ "target='_blank'>"+streamLink+"</a>");
+			}
 
-                // making an img div for the thumbnail to the stream
-                var streamImage = $("<div>");
-                streamImage.html("<a href=" + streamLink + " target='_blank'>" + "<img style='width: 95%' src=" + results[i].preview.medium + "></a>")
+		});
 
-                // streamImage.attr("src", results[i].preview.medium);
+		$.ajax({
+			method: "GET",
+			url: "https://www.reddit.com/r/php/search.json?q=" + game + "&limit=20&sort=hot"
+		}).done(function(response) {
+			$(".reddit-row-results").empty();
+			var res = response.data;
+			console.log(res);
+			$(".reddit-row-results").append("<ul>");
+			for (var i = 0; i < res.children.length; i++) {
 
-                // appending the streamDiv for thumbnail, name and link
-                streamDiv.append(pName);
+				var li = $("<li>");
+				var title = res.children[i].data.title;
+				var a = "<a href='https://www.reddit.com" + res.children[i].data.permalink + "' target='_blank'>" + title + "</a>";
 
-                streamDiv.append(streamImage);
+				$(".reddit-row-results").append(li);
+				li.append(a);
+				li.addClass("reddit-results");
 
-                // prepending all of the results into the results-display div
-                $(".twitch-row-results").append(streamDiv);
-
-            }
-
-        });
-
-        $.ajax({
-            method: "GET",
-            url: "https://www.reddit.com/r/php/search.json?q=" + game + "&limit=20&sort=hot"
-        }).done(function(response) {
-            $(".reddit-row-results").empty();
-            var res = response.data;
-            console.log(res);
-            $(".reddit-row-results").append("<ul>");
-            for (var i = 0; i < res.children.length; i++) {
-
-                var li = $("<li>");
-                var title = res.children[i].data.title;
-                var a = "<a href='https://www.reddit.com" + res.children[i].data.permalink + "' target='_blank'>" + title + "</a>";
-
-                $(".reddit-row-results").append(li);
-                li.append(a);
-                li.addClass("reddit-results");
-
-            }
-            $(".reddit-row-results").append("</ul>");
-            console.log(res);
-
+			}
+			$(".reddit-row-results").append("</ul>");
+			console.log(res);
         });
     });
 });

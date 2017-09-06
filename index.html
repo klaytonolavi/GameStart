@@ -31,6 +31,9 @@
 		<!-- Firebase -->
 		<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
 
+		<!-- MomentJS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
 		<!--Let browser know website is optimized for mobile-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -91,70 +94,70 @@
 						<div class="card black" id="sign-in">
 							<div class="card-content white-text">
 								<div id="signUp">
-	                                <span class="card-title">Sign Up</span>
-	                                <div class="row">
-	                                    <form class="col s12">
-	                                        <div class="row">
-	                                            <div class="input-field col s8">
-	                                                <i class="material-icons prefix">contacts</i>
-	                                                <input id="name" type="text" class="validate">
-	                                                <label for="name">Username</label>
-	                                            </div>
-	                                            <div class="input-field col s8">
-	                                                <i class="material-icons prefix">email</i>
-	                                                <input id="signUpEmail" type="text" class="validate">
-	                                                <label for="signUpEmail">Your Email</label>
-	                                            </div>
-	                                            <div class="input-field col s8">
-	                                                <i class="material-icons prefix">lock_outline</i>
-	                                                <input id="signUpPass" type="password" class="validate">
-	                                                <label for="signUpPass">Your Password</label>
-	                                            </div>
-	                                        </div>
-	                                        <div class="row">
-	                                            <span class="errorMsg"></span>
-	                                        </div>
-	                                        <div class="row">
-	                                            <div class="input-field col s12">
-	                                                <a id="signUpBtn" class="btn waves-effect waves-red red col">Submit</a>
-	                                            </div>
-	                                        </div>
-	                                        <div class="row">
-	                                        	<a id="switchToSignIn">Already signed up? Click here to sign in.</a>
-	                                        </div>
-	                                    </form>
-	                                </div>
-	                            </div>
-	                            <div id="signIn">
-	                                <span class="card-title">Sign In</span>
-	                                <div class="row">
-	                                    <form class="col s12">
-	                                        <div class="row">
-	                                            <div class="input-field col s8">
-	                                                <i class="material-icons prefix">email</i>
-	                                                <input id="signInEmail" type="text" class="validate">
-	                                                <label for="signInEmail">Your Email</label>
-	                                            </div>
-	                                            <div class="input-field col s8">
-	                                                <i class="material-icons prefix">lock_outline</i>
-	                                                <input id="signInPass" type="password" class="validate">
-	                                                <label for="signInPass">Your Password</label>
-	                                            </div>
-	                                        </div>
-	                                        <div class="row">
-	                                            <span class="errorMsg"></span>
-	                                        </div>
-	                                        <div class="row">
-	                                            <div class="input-field col s12">
-	                                                <a id="signInBtn" class="btn waves-effect waves-red red col">Submit</a>
-	                                            </div>
-	                                        </div>
-	                                        <div class="row">
-	                                        	<a id="switchToSignUp">New to the site? Click here to sign up.</a>
-	                                        </div>
-	                                    </form>
-	                                </div>
-	                            </div>
+									<span class="card-title">Sign Up</span>
+									<div class="row">
+										<form class="col s12">
+											<div class="row">
+												<div class="input-field col s8">
+													<i class="material-icons prefix">contacts</i>
+													<input id="name" type="text" class="validate">
+													<label for="name">Username</label>
+												</div>
+												<div class="input-field col s8">
+													<i class="material-icons prefix">email</i>
+													<input id="signUpEmail" type="text" class="validate">
+													<label for="signUpEmail">Your Email</label>
+												</div>
+												<div class="input-field col s8">
+													<i class="material-icons prefix">lock_outline</i>
+													<input id="signUpPass" type="password" class="validate">
+													<label for="signUpPass">Your Password</label>
+												</div>
+											</div>
+											<div class="row">
+												<span class="errorMsg"></span>
+											</div>
+											<div class="row">
+												<div class="input-field col s12">
+													<a id="signUpBtn" class="btn waves-effect waves-red red col">Submit</a>
+												</div>
+											</div>
+											<div class="row">
+												<a id="switchToSignIn">Already signed up? Click here to sign in.</a>
+											</div>
+										</form>
+									</div>
+								</div>
+								<div id="signIn">
+									<span class="card-title">Sign In</span>
+									<div class="row">
+										<form class="col s12">
+											<div class="row">
+												<div class="input-field col s8">
+													<i class="material-icons prefix">email</i>
+													<input id="signInEmail" type="text" class="validate">
+													<label for="signInEmail">Your Email</label>
+												</div>
+												<div class="input-field col s8">
+													<i class="material-icons prefix">lock_outline</i>
+													<input id="signInPass" type="password" class="validate">
+													<label for="signInPass">Your Password</label>
+												</div>
+											</div>
+											<div class="row">
+												<span class="errorMsg"></span>
+											</div>
+											<div class="row">
+												<div class="input-field col s12">
+													<a id="signInBtn" class="btn waves-effect waves-red red col">Submit</a>
+												</div>
+											</div>
+											<div class="row">
+												<a id="switchToSignUp">New to the site? Click here to sign up.</a>
+											</div>
+										</form>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -297,12 +300,15 @@
 				  <div class="row">
 					<div class="input-field col s12">
 					  <label for="text">Message</label>
-					  <input id="text" type="text" class="validate">
+					  <input id="text" type="text">
 					</div>
 				  </div>
 				  <div class="row">
 					<div class="input-field col s12">
-					  <a id="post" class="btn waves-effect waves-red red white-text col">Post</a>
+					  <button id="post" class="btn waves-effect waves-red red white-text col" type="submit">
+						Post
+						<i class="material-icons right">send</i>
+					  </button>
 					</div>
 				  </div>
 				</form>
