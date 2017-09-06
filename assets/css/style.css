@@ -66,6 +66,12 @@ nav .brand-logo {
 	max-height: 300px;
 }
 
+.reddit-results {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
 .ui-widget {
 	font-family: "Montserrat", sans-serif;
 }
