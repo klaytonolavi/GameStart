@@ -221,6 +221,7 @@ $(document).ready(function() {
 
 
 	$("#post").on("click", function() {
+		event.preventDefault();
 		if ($("#text").val() !== "") {
 			var msgUser = userName;
 			var msgText = $("#text").val().trim();
