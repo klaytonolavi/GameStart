@@ -31,6 +31,9 @@
 		<!-- Firebase -->
 		<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
 
+		<!-- MomentJS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
 		<!--Let browser know website is optimized for mobile-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -91,70 +94,70 @@
 						<div class="card black" id="sign-in">
 							<div class="card-content white-text">
 								<div id="signUp">
-	                                <span class="card-title">Sign Up</span>
-	                                <div class="row">
-	                                    <form class="col s12">
-	                                        <div class="row">
-	                                            <div class="input-field col s8">
-	                                                <i class="material-icons prefix">contacts</i>
-	                                                <input id="name" type="text" class="validate">
-	                                                <label for="name">Username</label>
-	                                            </div>
-	                                            <div class="input-field col s8">
-	                                                <i class="material-icons prefix">email</i>
-	                                                <input id="signUpEmail" type="text" class="validate">
-	                                                <label for="signUpEmail">Your Email</label>
-	                                            </div>
-	                                            <div class="input-field col s8">
-	                                                <i class="material-icons prefix">lock_outline</i>
-	                                                <input id="signUpPass" type="password" class="validate">
-	                                                <label for="signUpPass">Your Password</label>
-	                                            </div>
-	                                        </div>
-	                                        <div class="row">
-	                                            <span class="errorMsg"></span>
-	                                        </div>
-	                                        <div class="row">
-	                                            <div class="input-field col s12">
-	                                                <a id="signUpBtn" class="btn waves-effect waves-red red col">Submit</a>
-	                                            </div>
-	                                        </div>
-	                                        <div class="row">
-	                                        	<a id="switchToSignIn">Already signed up? Click here to sign in.</a>
-	                                        </div>
-	                                    </form>
-	                                </div>
-	                            </div>
-	                            <div id="signIn">
-	                                <span class="card-title">Sign In</span>
-	                                <div class="row">
-	                                    <form class="col s12">
-	                                        <div class="row">
-	                                            <div class="input-field col s8">
-	                                                <i class="material-icons prefix">email</i>
-	                                                <input id="signInEmail" type="text" class="validate">
-	                                                <label for="signInEmail">Your Email</label>
-	                                            </div>
-	                                            <div class="input-field col s8">
-	                                                <i class="material-icons prefix">lock_outline</i>
-	                                                <input id="signInPass" type="password" class="validate">
-	                                                <label for="signInPass">Your Password</label>
-	                                            </div>
-	                                        </div>
-	                                        <div class="row">
-	                                            <span class="errorMsg"></span>
-	                                        </div>
-	                                        <div class="row">
-	                                            <div class="input-field col s12">
-	                                                <a id="signInBtn" class="btn waves-effect waves-red red col">Submit</a>
-	                                            </div>
-	                                        </div>
-	                                        <div class="row">
-	                                        	<a id="switchToSignUp">New to the site? Click here to sign up.</a>
-	                                        </div>
-	                                    </form>
-	                                </div>
-	                            </div>
+									<span class="card-title">Sign Up</span>
+									<div class="row">
+										<form class="col s12">
+											<div class="row">
+												<div class="input-field col s8">
+													<i class="material-icons prefix">contacts</i>
+													<input id="name" type="text" class="validate">
+													<label for="name">Username</label>
+												</div>
+												<div class="input-field col s8">
+													<i class="material-icons prefix">email</i>
+													<input id="signUpEmail" type="text" class="validate">
+													<label for="signUpEmail">Your Email</label>
+												</div>
+												<div class="input-field col s8">
+													<i class="material-icons prefix">lock_outline</i>
+													<input id="signUpPass" type="password" class="validate">
+													<label for="signUpPass">Your Password</label>
+												</div>
+											</div>
+											<div class="row">
+												<span class="errorMsg"></span>
+											</div>
+											<div class="row">
+												<div class="input-field col s12">
+													<a id="signUpBtn" class="btn waves-effect waves-red red col">Submit</a>
+												</div>
+											</div>
+											<div class="row">
+												<a id="switchToSignIn">Already signed up? Click here to sign in.</a>
+											</div>
+										</form>
+									</div>
+								</div>
+								<div id="signIn">
+									<span class="card-title">Sign In</span>
+									<div class="row">
+										<form class="col s12">
+											<div class="row">
+												<div class="input-field col s8">
+													<i class="material-icons prefix">email</i>
+													<input id="signInEmail" type="text" class="validate">
+													<label for="signInEmail">Your Email</label>
+												</div>
+												<div class="input-field col s8">
+													<i class="material-icons prefix">lock_outline</i>
+													<input id="signInPass" type="password" class="validate">
+													<label for="signInPass">Your Password</label>
+												</div>
+											</div>
+											<div class="row">
+												<span class="errorMsg"></span>
+											</div>
+											<div class="row">
+												<div class="input-field col s12">
+													<a id="signInBtn" class="btn waves-effect waves-red red col">Submit</a>
+												</div>
+											</div>
+											<div class="row">
+												<a id="switchToSignUp">New to the site? Click here to sign up.</a>
+											</div>
+										</form>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -167,8 +170,10 @@
 						<div class="card black" id="reddit">
 							<div class="card-content white-text">
 								<span class="card-title">Learn From the Gaming Community</span>
-								<div class="reddit-row-results">
-									<!-- Reddit results here -->
+								<div class="row" id="reddit-row">
+									<div class="reddit-row-results">
+										<!-- Reddit results here -->
+									</div>
 								</div>
 							</div>
 						</div>
@@ -278,7 +283,7 @@
 								<p>We're four guys who decided to take a web development boot camp and got thrown together to do a project.  Here's to learning something!</p>
 								<p><span style="font-weight: bold" class="red-text">Brian P. Evans:</span>  Mathematician at Large and Actor for Hire, Brian was in Tech Support and Product Management for nigh on 30 years when the contract got reduced and he got laid off.  Now, he's learning web development to get a new job.  Don't like the front end design?  Blame him.</p>
 								<p><span style="font-weight: bold" class="red-text">Klayton Liekkio:</span> Entry level full stack web developer. Surfer and rock climber from Carlsbad, CA. Spends too much time on Twitch and Reddit. Responsible for Twitch API functionality.</p>
-								<p><span style="font-weight: bold" class="red-text">Kevin Lussier:</span></p>
+								<p><span style="font-weight: bold" class="red-text">Kevin Lussier:</span> Full stack web developer getting his feet wet in the industry. Nature explorer, hiker, and National Park enthusiast. Worked on the Reddit API component of GameStart.</p>
 								<p><span style="font-weight: bold" class="red-text">Pearce Moffat:</span> Full stack web developer that specializes on the back-end. Handled all of the firebase code for GameStart.</p>
 							</div>
 							<div class="modal-footer">
@@ -295,12 +300,15 @@
 				  <div class="row">
 					<div class="input-field col s12">
 					  <label for="text">Message</label>
-					  <input id="text" type="text" class="validate">
+					  <input id="text" type="text">
 					</div>
 				  </div>
 				  <div class="row">
 					<div class="input-field col s12">
-					  <a id="post" class="btn waves-effect waves-red red white-text col">Post</a>
+					  <button id="post" class="btn waves-effect waves-red red white-text col" type="submit">
+						Post
+						<i class="material-icons right">send</i>
+					  </button>
 					</div>
 				  </div>
 				</form>
