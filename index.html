@@ -90,23 +90,71 @@
 					<div class="col s12 m6">
 						<div class="card black" id="sign-in">
 							<div class="card-content white-text">
-								<span class="card-title">Sign In or Sign Up</span>
-								<div class="row">
-									<form class="col s12">
-										<div class="row">
-											<div class="input-field col s8">
-												<i class="material-icons prefix">contacts</i>
-												<input id="login" type="text" class="validate">
-												<label for="login">Your Name</label>
-											</div>
-										</div>
-										<div class="row">
-											<div class="input-field col s12">
-												<a id="submitBtn" class="btn waves-effect waves-red red col">Submit</a>
-											</div>
-										</div>
-									</form>
-								</div>
+								<div id="signUp">
+	                                <span class="card-title">Sign Up</span>
+	                                <div class="row">
+	                                    <form class="col s12">
+	                                        <div class="row">
+	                                            <div class="input-field col s8">
+	                                                <i class="material-icons prefix">contacts</i>
+	                                                <input id="name" type="text" class="validate">
+	                                                <label for="name">Username</label>
+	                                            </div>
+	                                            <div class="input-field col s8">
+	                                                <i class="material-icons prefix">email</i>
+	                                                <input id="signUpEmail" type="text" class="validate">
+	                                                <label for="signUpEmail">Your Email</label>
+	                                            </div>
+	                                            <div class="input-field col s8">
+	                                                <i class="material-icons prefix">lock_outline</i>
+	                                                <input id="signUpPass" type="password" class="validate">
+	                                                <label for="signUpPass">Your Password</label>
+	                                            </div>
+	                                        </div>
+	                                        <div class="row">
+	                                            <span class="errorMsg"></span>
+	                                        </div>
+	                                        <div class="row">
+	                                            <div class="input-field col s12">
+	                                                <a id="signUpBtn" class="btn waves-effect waves-red red col">Submit</a>
+	                                            </div>
+	                                        </div>
+	                                        <div class="row">
+	                                        	<a id="switchToSignIn">Already signed up? Click here to sign in.</a>
+	                                        </div>
+	                                    </form>
+	                                </div>
+	                            </div>
+	                            <div id="signIn">
+	                                <span class="card-title">Sign In</span>
+	                                <div class="row">
+	                                    <form class="col s12">
+	                                        <div class="row">
+	                                            <div class="input-field col s8">
+	                                                <i class="material-icons prefix">email</i>
+	                                                <input id="signInEmail" type="text" class="validate">
+	                                                <label for="signInEmail">Your Email</label>
+	                                            </div>
+	                                            <div class="input-field col s8">
+	                                                <i class="material-icons prefix">lock_outline</i>
+	                                                <input id="signInPass" type="password" class="validate">
+	                                                <label for="signInPass">Your Password</label>
+	                                            </div>
+	                                        </div>
+	                                        <div class="row">
+	                                            <span class="errorMsg"></span>
+	                                        </div>
+	                                        <div class="row">
+	                                            <div class="input-field col s12">
+	                                                <a id="signInBtn" class="btn waves-effect waves-red red col">Submit</a>
+	                                            </div>
+	                                        </div>
+	                                        <div class="row">
+	                                        	<a id="switchToSignUp">New to the site? Click here to sign up.</a>
+	                                        </div>
+	                                    </form>
+	                                </div>
+	                            </div>
 							</div>
 						</div>
 					</div>
@@ -172,7 +220,7 @@
 							<li>
 								<a class="modal-trigger" href="#aboutUsModal">
 									<div class="chip footerChip waves-effect waves-red #dddddd">
-										<img src="assets/images/about-us.JPG" alt="About Us">
+										<img src="assets/images/about-us.jpg" alt="About Us">
 										About Us
 									</div>
 								</a>
@@ -231,7 +279,7 @@
 								<p><span style="font-weight: bold" class="red-text">Brian P. Evans:</span>  Mathematician at Large and Actor for Hire, Brian was in Tech Support and Product Management for nigh on 30 years when the contract got reduced and he got laid off.  Now, he's learning web development to get a new job.  Don't like the front end design?  Blame him.</p>
 								<p><span style="font-weight: bold" class="red-text">Klayton Liekkio:</span> Entry level full stack web developer. Surfer and rock climber from Carlsbad, CA. Spends too much time on Twitch and Reddit. Responsible for Twitch API functionality.</p>
 								<p><span style="font-weight: bold" class="red-text">Kevin Lussier:</span></p>
-								<p><span style="font-weight: bold" class="red-text">Pearce Moffat:</span></p>
+								<p><span style="font-weight: bold" class="red-text">Pearce Moffat:</span> Full stack web developer that specializes on the back-end. Handled all of the firebase code for GameStart.</p>
 							</div>
 							<div class="modal-footer">
 								<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cool</a>
