@@ -355,7 +355,7 @@ $(document).ready(function() {
 
         $.ajax({
             method: "GET",
-            url: "https://www.reddit.com/r/php/search.json?q=" + game + "&limit=5&sort=hot"
+            url: "https://www.reddit.com/r/php/search.json?q=" + game + "&limit=20&sort=hot"
         }).done(function(response) {
             $(".reddit-row-results").empty();
             var res = response.data;

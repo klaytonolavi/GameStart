@@ -61,7 +61,7 @@ nav .brand-logo {
 	min-height: 120px;
 }
 
-#twitch-row {
+#twitch-row, #reddit-row {
 	overflow-y: auto;
 	max-height: 300px;
 }
@@ -101,3 +101,5 @@ nav .brand-logo {
 		display: none;
 	}
 }
+
+
