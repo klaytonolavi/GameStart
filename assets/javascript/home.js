@@ -381,7 +381,6 @@ $(document).ready(function() {
 			}
 			$(".reddit-row-results").append("</ul>");
 			console.log(res);
-
-		});
-	});
+        });
+    });
 });
