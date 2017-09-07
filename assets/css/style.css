@@ -8,7 +8,8 @@ html {
 }
 
 body {
-	background-color: #dddddd;
+	background-image: url("dark-triangles");
+	/*background-color: #dddddd;*/
 	font-family: 'Montserrat', sans-serif;
 }
 
