@@ -40,6 +40,8 @@
 	</head>
 
 	<body>
+
+		<!-- Navigation bar -->
 		<div class="navbar-fixed">
 			<nav class="top-nav black">
 				<div class="container">
@@ -54,13 +56,21 @@
 				</div>
 			</nav>
 		</div>
+
+		<!-- Main section -->
 		<main>
+
+			<!-- Top section -->
 			<div class="container">
 				<div class="row">
 					<div class="col s12">
+
+						<!-- Top card for when you're logged out -->
 						<div class="card-panel" id="topCardHome">
 							Welcome to <span class="red-text">Game</span>Start!  Here you can find information about your favorite games.  Never played it before?  That's why you're here!  Do a search to find out the latest <a href="https://www.reddit.com" target="_blank">Reddit</a> threads regarding your game and then find players on <a href="https://www.twitch.tv" target=")blank">Twitch</a> who can give you a first-hand experience on how to play the game.  Level up your game!
 						</div>
+
+						<!-- Top card for when you're logged in -->
 						<div class="card-panel" id="topCardSearch">
 							<span id="welcomeMessage"></span>
 							<br>Edit your games list below.<br>
@@ -74,8 +84,12 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- Main section -->
 			<div class="container">
 				<div class="row">
+					
+					<!-- Left Card for when you're logged out:  IGN News -->
 					<div class="col s12 m6">
 						<div class="card black" id="gaming-news">
 							<div class="card-content white-text">
@@ -90,9 +104,12 @@
 						</div>
 					</div>
 
+					<!-- Right card for when you're logged out:  Sign In/Sign Up -->
 					<div class="col s12 m6">
 						<div class="card black" id="sign-in">
 							<div class="card-content white-text">
+
+								<!-- Sign Up section -->
 								<div id="signUp">
 									<span class="card-title">Sign Up</span>
 									<div class="row">
@@ -119,6 +136,8 @@
 													<label for="checkPass">Confirm Password</label>
 												</div>
 											</div>
+
+											<!-- Error message -->
 											<div class="row">
 												<span class="errorMsg"></span>
 											</div>
@@ -133,6 +152,8 @@
 										</form>
 									</div>
 								</div>
+
+								<!-- Sign In Section -->
 								<div id="signIn">
 									<span class="card-title">Sign In</span>
 									<div class="row">
@@ -149,6 +170,8 @@
 													<label for="signInPass">Your Password</label>
 												</div>
 											</div>
+
+											<!-- Error message -->
 											<div class="row">
 												<span class="errorMsg"></span>
 											</div>
@@ -168,9 +191,12 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- Main section for when you're logged in -->
 			<div class="container">
 				<div class="row">
-					<!-- DIV for Reddit API -->
+
+					<!-- Left card for when you're logged in:  Reddit -->
 					<div class="col s12 m6">
 						<div class="card black" id="reddit">
 							<div class="card-content white-text">
@@ -184,7 +210,7 @@
 						</div>
 					</div>
 
-					<!-- new div for twitch API content -->
+					<!-- Right card for when you're logged in:  Twitch -->
 					<div class="col s12 m6">
 						<div class="card black" id="twitch">
 							<div class="card-content white-text">
@@ -200,14 +226,20 @@
 				</div>
 			</div>
 		</main>
+
+		<!-- Footer -->
 		<footer class="page-footer black">
 			<div class="container">
 				<div class="row">
+
+					<!-- Announcements -->
 					<div class="col l6 s12">
 						<h5 class="white-text">Help <span class="red-text">Game</span>Start Grow</h5>
 						<p class="grey-text text-lighten-4">If you have ideas for how <span class="red-text">Game</span>Start can be improved, let us know!  Click on <a class="modal-trigger" href="#suggestionsModal">Suggestions</a> and give us a hint.</p>
 						<p class="grey-text text-lighten-4">Mobile Chat is coming!  Talk to other players online, discuss the games you're playing, and even find new people to game with, all from your phone.</p>
 					</div>
+
+					<!-- Stuff to click -->
 					<div class="col l4 offset-l2 s12">
 						<h5 class="white-text">Stuff to Click</h5>
 						<ul>
@@ -320,35 +352,37 @@
 								<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cool</a>
 							</div>
 						</div>
-<div id="dialog" title="Chat with Gamers">
-	<div class="row">
-		<div class="card-panel">
-		  <div class="card black" id="rightCard">
-			<div class="card-content white-text">
-			  <div class="row">
-				<form class="col s12">
-				  <div class="row">
-					<div class="input-field col s12">
-					  <label for="text">Message</label>
-					  <input id="text" type="text">
-					</div>
-				  </div>
-				  <div class="row">
-					<div class="input-field col s12">
-					  <button id="post" class="btn waves-effect waves-red red white-text col" type="submit">
-						Post
-						<i class="material-icons right">send</i>
-					  </button>
-					</div>
-				  </div>
-				</form>
-			  </div>
-			</div>
-		  </div>
-		  <div id="results"></div>
-		</div>
-	</div>
-</div>
+
+						<!-- Chat Dialog -->
+						<div id="dialog" title="Chat with Gamers">
+							<div class="row">
+								<div class="card-panel">
+								  <div class="card black" id="rightCard">
+									<div class="card-content white-text">
+									  <div class="row">
+										<form class="col s12">
+										  <div class="row">
+											<div class="input-field col s12">
+											  <label for="text">Message</label>
+											  <input id="text" type="text">
+											</div>
+										  </div>
+										  <div class="row">
+											<div class="input-field col s12">
+											  <button id="post" class="btn waves-effect waves-red red white-text col" type="submit">
+												Post
+												<i class="material-icons right">send</i>
+											  </button>
+											</div>
+										  </div>
+										</form>
+									  </div>
+									</div>
+								  </div>
+								  <div id="results"></div>
+								</div>
+							</div>
+						</div>
 
 					</div>
 				</div>

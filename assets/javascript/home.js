@@ -180,7 +180,7 @@ $(document).ready(function() {
                 
                 // If the game doesn't exist on twitch, alert user 
                 else {
-                    $("#gameMessage").html("Cannot find " + toTitleCase(newGame) + " on Twitch.");
+                    $("#gameMessage").html("Nobody is streaming " + toTitleCase(newGame) + " on Twitch right now.");
                 }
             });
             
