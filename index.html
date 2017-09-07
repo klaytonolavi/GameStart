@@ -40,6 +40,8 @@
 	</head>
 
 	<body>
+
+		<!-- Navigation bar -->
 		<div class="navbar-fixed">
 			<nav class="top-nav black">
 				<div class="container">
@@ -48,19 +50,27 @@
 							<a class="brand-logo" href="index.html"><span class="red-text">Game</span>Start</a>
 						</div>
 						<div class="right hide-on-med-and-down">
-							Get Your Game to Level 1
+							Level Up Your Game
 						</div>
 					</div>
 				</div>
 			</nav>
 		</div>
+
+		<!-- Main section -->
 		<main>
+
+			<!-- Top section -->
 			<div class="container">
 				<div class="row">
 					<div class="col s12">
+
+						<!-- Top card for when you're logged out -->
 						<div class="card-panel" id="topCardHome">
-							Welcome to <span class="red-text">Game</span>Start!  Here you can find information about your favorite games.  Never played it before?  That's why you're here!  Do a search to find out the latest <a href="https://www.reddit.com" target="_blank">Reddit</a> threads regarding your game and then find players on <a href="https://www.twitch.tv" target=")blank">Twitch</a> who can give you a first-hand experience on how to play the game.  Get your game to Level 1!
+							Welcome to <span class="red-text">Game</span>Start!  Here you can find information about your favorite games.  Never played it before?  That's why you're here!  Do a search to find out the latest <a href="https://www.reddit.com" target="_blank">Reddit</a> threads regarding your game and then find players on <a href="https://www.twitch.tv" target=")blank">Twitch</a> who can give you a first-hand experience on how to play the game.  Level up your game!
 						</div>
+
+						<!-- Top card for when you're logged in -->
 						<div class="card-panel" id="topCardSearch">
 							<span id="welcomeMessage"></span>
 							<br>Edit your games list below.<br>
@@ -74,8 +84,12 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- Main section -->
 			<div class="container">
 				<div class="row">
+					
+					<!-- Left Card for when you're logged out:  IGN News -->
 					<div class="col s12 m6">
 						<div class="card black" id="gaming-news">
 							<div class="card-content white-text">
@@ -90,9 +104,12 @@
 						</div>
 					</div>
 
+					<!-- Right card for when you're logged out:  Sign In/Sign Up -->
 					<div class="col s12 m6">
 						<div class="card black" id="sign-in">
 							<div class="card-content white-text">
+
+								<!-- Sign Up section -->
 								<div id="signUp">
 									<span class="card-title">Sign Up</span>
 									<div class="row">
@@ -113,7 +130,14 @@
 													<input id="signUpPass" type="password" class="validate">
 													<label for="signUpPass">Your Password</label>
 												</div>
+												<div class="input-field col s8">
+													<i class="material-icons prefix">lock_outline</i>
+													<input id="checkPass" type="password" class="validate">
+													<label for="checkPass">Confirm Password</label>
+												</div>
 											</div>
+
+											<!-- Error message -->
 											<div class="row">
 												<span class="errorMsg"></span>
 											</div>
@@ -129,6 +153,8 @@
 										</form>
 									</div>
 								</div>
+
+								<!-- Sign In Section -->
 								<div id="signIn">
 									<span class="card-title">Sign In</span>
 									<div class="row">
@@ -145,6 +171,8 @@
 													<label for="signInPass">Your Password</label>
 												</div>
 											</div>
+
+											<!-- Error message -->
 											<div class="row">
 												<span class="errorMsg"></span>
 											</div>
@@ -165,13 +193,16 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- Main section for when you're logged in -->
 			<div class="container">
 				<div class="row">
-					<!-- DIV for Reddit API -->
+
+					<!-- Left card for when you're logged in:  Reddit -->
 					<div class="col s12 m6">
 						<div class="card black" id="reddit">
 							<div class="card-content white-text">
-								<span class="card-title">Learn From the Gaming Community</span>
+								<span class="card-title">Read</span>
 								<div class="row" id="reddit-row">
 									<div class="reddit-row-results">
 										<!-- Reddit results here -->
@@ -181,11 +212,11 @@
 						</div>
 					</div>
 
-					<!-- new div for twitch API content -->
+					<!-- Right card for when you're logged in:  Twitch -->
 					<div class="col s12 m6">
 						<div class="card black" id="twitch">
 							<div class="card-content white-text">
-								<span class="card-title">Learn from the Pros</span>
+								<span class="card-title">Watch</span>
 								<div class="row" id="twitch-row">
 									<div class="twitch-row-results">
 									<!-- twitch results will go here -->
@@ -197,17 +228,29 @@
 				</div>
 			</div>
 		</main>
+
+		<!-- Footer -->
 		<footer class="page-footer black">
 			<div class="container">
 				<div class="row">
+
+					<!-- Announcements -->
 					<div class="col l6 s12">
 						<h5 class="white-text">Help <span class="red-text">Game</span>Start Grow</h5>
 						<p class="grey-text text-lighten-4">If you have ideas for how <span class="red-text">Game</span>Start can be improved, let us know!  Click on <a class="modal-trigger" href="#suggestionsModal">Suggestions</a> and give us a hint.</p>
 						<p class="grey-text text-lighten-4">Mobile Chat is coming!  Talk to other players online, discuss the games you're playing, and even find new people to game with, all from your phone.</p>
 					</div>
+
+					<!-- Stuff to click -->
 					<div class="col l4 offset-l2 s12">
 						<h5 class="white-text">Stuff to Click</h5>
 						<ul>
+							<li>
+								<div class="chip footerChip waves-effect waves-red #dddddd" id="logOut">
+									<img src="assets/images/logout.jpg" alt="Support">
+									Log Out
+								</div>
+							</li>
 							<li>
 								<a class="modal-trigger" href="#supportModal">
 									<div class="chip footerChip waves-effect waves-red #dddddd">
@@ -244,12 +287,31 @@
 						<div id="supportModal" class="modal black-text">
 							<div class="modal-content">
 								<h4>Support for the Site</h4>
-								<p>If you want to use the site, follow these simple steps:</p>
-								<p>1. Enter your name in the Sign In or Sign Up field.  This will let us know who you are and bring up any previous searches you've saved.</p>
-								<p>2. If you've made any searches, just click on the button to load up its information.
-								<p>&nbsp;&nbsp;&nbsp;* If you want to create a new search, just enter the game name in the field and click Add.</p>
-								<p>&nbsp;&nbsp;&nbsp;* To delete a search button, just enter the game name in the field and click Remove.</p>
-								<p>3. In the Reddit and Twitch boxes, just click on the links to get the info you need to take Get your game to Level 1!</p>
+								  <div class="row">
+									<div class="col s12">
+									  <ul class="tabs">
+									  	<li class="tab col s3"><a class="active" href="#intro">Introduction</a></li>
+										<li class="tab col s3"><a href="#signingIn">Sign In</a></li>
+										<li class="tab col s3"><a href="#signingUp">Sign Up</a></li>
+										<li class="tab col s3"><a href="#usingSite">Using the Site</a></li>
+									  </ul>
+									</div>
+									<div id="intro" class="col s12">
+										<span class="red-text">Game</span>Start is here to get your game up to speed.  If you haven't created an account yet, you'll need to sign up.  Otherwise, sign in.  You can then do a search for your game and get links to Reddit to find out what gamers are saying as well as video feeds from Twitch so you can watch people play before you risk your avatar's pixels.
+									</div>
+									<div id="signingIn" class="col s12">
+										From the home screen, put in your username and password and click Submit.  Please note that passwords are cASe seNSItivE.  If you're having trouble with your account, send us feedback.
+									</div>
+									<div id="signingUp" class="col s12">
+										If you don't have an account yet, you'll want to click the link to sign up, found underneath the Submit button on the home page.  You'll be asked to create a username, enter your email address, and create a password.  When you click Submit, your account will be created and you'll be taken into the site to start your quest to level up your game.
+									</div>
+									<div id="usingSite" class="col s12">
+										<p>You'll see a Search section at the top of the screen.  Enter the name of the game in the field and click Add.  The system uses Twitch for its database so make sure to match the spelling.  For example, "Diablo" is not the same as "Diablo III: Reaper of Souls."  If you search for the former, you'll find people playing the original Diablo (and yes, they do still exist).</p>
+										<p>If we can't find your game, we'll let you know.  You'll want to try again.</p>
+										<p>When you create a search, you'll then have a button created for that game.  Just click on it to load up its Reddit and Twitch results.</p>
+										<p>To delete a button for a game you no longer want, just enter its name (spelling counts!) and click Delete.</p>
+									</div>
+								  </div>
 							</div>
 							<div class="modal-footer">
 								<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cool</a>
@@ -292,35 +354,37 @@
 								<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cool</a>
 							</div>
 						</div>
-<div id="dialog" title="Chat with Gamers">
-	<div class="row">
-		<div class="card-panel">
-		  <div class="card black" id="rightCard">
-			<div class="card-content white-text">
-			  <div class="row">
-				<form class="col s12">
-				  <div class="row">
-					<div class="input-field col s12">
-					  <label for="text">Message</label>
-					  <input id="text" type="text">
-					</div>
-				  </div>
-				  <div class="row">
-					<div class="input-field col s12">
-					  <button id="post" class="btn waves-effect waves-red red white-text col" type="submit">
-						Post
-						<i class="material-icons right">send</i>
-					  </button>
-					</div>
-				  </div>
-				</form>
-			  </div>
-			</div>
-		  </div>
-		  <div id="results"></div>
-		</div>
-	</div>
-</div>
+
+						<!-- Chat Dialog -->
+						<div id="dialog" title="Chat with Gamers">
+							<div class="row">
+								<div class="card-panel">
+								  <div class="card black" id="rightCard">
+									<div class="card-content white-text">
+									  <div class="row">
+										<form class="col s12">
+										  <div class="row">
+											<div class="input-field col s12">
+											  <label for="text">Message</label>
+											  <input id="text" type="text">
+											</div>
+										  </div>
+										  <div class="row">
+											<div class="input-field col s12">
+											  <button id="post" class="btn waves-effect waves-red red white-text col" type="submit">
+												Post
+												<i class="material-icons right">send</i>
+											  </button>
+											</div>
+										  </div>
+										</form>
+									  </div>
+									</div>
+								  </div>
+								  <div id="results"></div>
+								</div>
+							</div>
+						</div>
 
 					</div>
 				</div>
