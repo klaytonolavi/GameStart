@@ -8,7 +8,8 @@ html {
 }
 
 body {
-	background-color: #dddddd;
+/*	background-color: #dddddd;*/
+	background-image: url("../images/playstation-pattern.png");
 	font-family: 'Montserrat', sans-serif;
 }
 
