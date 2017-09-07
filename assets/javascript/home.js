@@ -94,7 +94,6 @@ $(document).ready(function() {
             //  Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;
-            console.log(errorMessage);
             $(".errorMsg").html(errorMessage);
             $("#signInEmail, #signInPass").val("");
         });
@@ -168,7 +167,6 @@ $(document).ready(function() {
                 method: "GET",
                 headers: { "Client-ID": "uo6dggojyb8d6soh92zknwmi5ej1q2" }
             }).done(function(response) {
-            	console.log(response);
                 var results = response.streams;
                 
                 // If the game exists, add it to the list
