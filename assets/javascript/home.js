@@ -128,9 +128,10 @@ $(document).ready(function() {
 
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
-			// User is signed in.
+			console.log(user);
+			console.log("User is signed in");
 		} else {
-			// User is signed out.
+			console.log("User is signed out");
 		}
 	});
 
