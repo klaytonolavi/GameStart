@@ -13,7 +13,6 @@ var database = firebase.database();
 var chatRef = database.ref("/chatData");
 var userName;
 var iLoggedIn;
-$("#chatOpener").hide();
 $("#signUp").hide();
 
 $(document).ready(function() {
@@ -43,39 +42,31 @@ $(document).ready(function() {
 		currentEmail = $("#signUpEmail").val().trim().toLowerCase();
 		currentUser = currentEmail.slice(0, -4);
 		currentPass = $("#signUpPass").val().trim();
+		checkPass = $("#checkPass").val().trim();
 		userName = $("#name").val().trim();
 
-		firebase.auth().createUserWithEmailAndPassword(currentEmail, currentPass).then(function() {
-			var user = firebase.auth().currentUser;
+		if (currentPass === checkPass) {
+			firebase.auth().createUserWithEmailAndPassword(currentEmail, currentPass).then(function() {
+				var user = firebase.auth().currentUser;
 
-			user.updateProfile({
-				displayName: userName
-			}).then(function() {
-				// hide sign in div
-				$("#sign-in").hide();
-				// hide gaming news div
-				$("#gaming-news").hide();
-				// show twitch div
-				$("#twitch").show();
-				// show reddit div
-				$("#reddit").show();	
-			}).catch(function(error) {});
+				user.updateProfile({
+					displayName: userName
+				}).catch(function(error) {});
 
-			updateUser();
-			$("#welcomeMessage").html("Hello, " + userName + ". Welcome to GameStart.");
-			$("#topCardHome").css("display", "none");
-			$("#topCardSearch").css("display", "block");
-			$("#buttonList").css("display", "block");
-			$("#chatOpener").show();
+				$("#signUpEmail, #signUpPass, #name").val("");
 
-		}).catch(function(error) {
-			// Handle Errors here.
-			var errorCode = error.code;
-			var errorMessage = error.message;
-			console.log(errorMessage);
-			$(".errorMsg").html(errorMessage);
-			$("#signUpEmail, #signUpPass, #name").val("");
-		});
+			}).catch(function(error) {
+				// Handle Errors here.
+				var errorCode = error.code;
+				var errorMessage = error.message;
+				$(".errorMsg").html(errorMessage);
+				$("#signUpEmail, #signUpPass, #name, #checkPass").val("");
+			});
+		}
+		else {
+			$(".errorMsg").html("Passwords do not match");
+			$("#signUpEmail, #signUpPass, #name, #checkPass").val("");
+		}
 	});
 
 	$("#signInBtn").on("click", function(event) {
@@ -86,24 +77,9 @@ $(document).ready(function() {
 		currentPass = $("#signInPass").val().trim();
 
 		firebase.auth().signInWithEmailAndPassword(currentEmail, currentPass).then(function() {
-			// hide sign in div
-			$("#sign-in").hide();
-			// hide gaming news div
-			$("#gaming-news").hide();
-			// show twitch div
-			$("#twitch").show();
-			// show reddit div
-			$("#reddit").show();
-
 			var user = firebase.auth().currentUser;
 			userName = user.displayName;
-
-			updateUser();
-			$("#welcomeMessage").html("Welcome back, " + userName + ".");
-			$("#topCardHome").css("display", "none");
-			$("#topCardSearch").css("display", "block");
-			$("#buttonList").css("display", "block");
-			$("#chatOpener").show();
+			$("#signInEmail, #signInPass").val("");
 
 		}).catch(function(error) {
 			// Handle Errors here.
@@ -114,6 +90,10 @@ $(document).ready(function() {
 			$("#signInEmail, #signInPass").val("");
 		});
 	});
+
+	$("#logOut").on("click", function() {
+		firebase.auth().signOut();
+	})
 
 	$("#switchToSignUp").on("click", function() {
 		$("#signUp").show();
@@ -127,10 +107,38 @@ $(document).ready(function() {
 
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
-			console.log(user);
-			console.log("User is signed in");
+			currentUser = user.email.slice(0, -4);
+			if (!userName) {userName = user.displayName;}
+			$("#logOut").show();
+			updateUser();
+			// hide sign in div
+			$("#sign-in").hide();
+			// hide gaming news div
+			$("#gaming-news").hide();
+			// show twitch div
+			$("#twitch").show();
+			// show reddit div
+			$("#reddit").show();
+			$("#topCardHome").css("display", "none");
+			$("#topCardSearch").css("display", "block");
+			$("#buttonList").css("display", "block");
+			$("#chatOpener").show();
+
+			$("#welcomeMessage").html("Hello, " + userName + ". Welcome to GameStart.");
 		} else {
-			console.log("User is signed out");
+			$("#logOut").hide();
+			// show sign in div
+			$("#sign-in").show();
+			// show gaming news div
+			$("#gaming-news").show();
+			// hide twitch div
+			$("#twitch").hide();
+			// hide reddit div
+			$("#reddit").hide();
+			$("#topCardHome").css("display", "block");
+			$("#topCardSearch").css("display", "none");
+			$("#buttonList").css("display", "none");
+			$("#chatOpener").hide();
 		}
 	});
 
