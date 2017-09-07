@@ -39,7 +39,6 @@ $(document).ready(function() {
 
 	$("#signUpBtn").on("click", function(event) {
 		event.preventDefault();
-		console.log("sign up clicked");
 
 		currentEmail = $("#signUpEmail").val().trim().toLowerCase();
 		currentUser = currentEmail.slice(0, -4);
@@ -148,8 +147,6 @@ $(document).ready(function() {
 			headers: { "Client-ID": "uo6dggojyb8d6soh92zknwmi5ej1q2" }
 		}).done(function(response) {
 
-			console.log(response);
-
 			var results = response.streams;
 
 			if (results.length > 0) {
@@ -210,7 +207,6 @@ $(document).ready(function() {
 				var widget = $(this).dialog("widget");
 				$(".ui-dialog-titlebar-close span", widget).removeClass("ui-icon-closethick").addClass("ui-icon-minusthick");
 			}
-
 		});
 
 		$("#chatOpener").on("click", function() {
@@ -325,9 +321,6 @@ $(document).ready(function() {
 			headers: { "Client-ID": "uo6dggojyb8d6soh92zknwmi5ej1q2" }
 		}).done(function(response) {
 
-			console.log(response);
-			console.log(response.streams.length);
-
 			var results = response.streams;
 
 			// for loop to search through the 10 results
@@ -368,7 +361,6 @@ $(document).ready(function() {
 		}).done(function(response) {
 			$(".reddit-row-results").empty();
 			var res = response.data;
-			console.log(res);
 			$(".reddit-row-results").append("<ul>");
 			for (var i = 0; i < res.children.length; i++) {
 
@@ -382,7 +374,6 @@ $(document).ready(function() {
 
 			}
 			$(".reddit-row-results").append("</ul>");
-			console.log(res);
         });
     });
 });
