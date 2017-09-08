@@ -94,7 +94,6 @@ $(document).ready(function() {
             //  Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;
-            console.log(errorMessage);
             $(".errorMsg").html(errorMessage);
             $("#signInEmail, #signInPass").val("");
         });
