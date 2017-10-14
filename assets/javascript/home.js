@@ -1,12 +1,12 @@
 
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyCDXTSh8I15rIl68qh5UcAxVs6buM34ZkU",
-    authDomain: "gamestart-75825.firebaseapp.com",
-    databaseURL: "https://gamestart-75825.firebaseio.com",
-    projectId: "gamestart-75825",
-    storageBucket: "",
-    messagingSenderId: "675051657577"
+    apiKey: "AIzaSyDjk_9-08twszGj4LH0btepYBnSrmfDVMs",
+    authDomain: "gamestart-a3322.firebaseapp.com",
+    databaseURL: "https://gamestart-a3322.firebaseio.com",
+    projectId: "gamestart-a3322",
+    storageBucket: "gamestart-a3322.appspot.com",
+    messagingSenderId: "360540457920"
 };
 
 // Initialize variables
